@@ -1,0 +1,1202 @@
+[
+  {
+    "q": "Why should the security analyst disable/remove unnecessary ISAPI filters?",
+    "options": [
+      "To defend against social engineering attacks",
+      "To defend against webserver attacks",
+      "To defend against jailbreaking",
+      "To defend against wireless attacks"
+    ],
+    "correct": 1,
+    "hint": "These extension DLLs run directly inside web servers like Microsoft IIS.",
+    "domain": "Module 13: Hacking Web Servers"
+  },
+  {
+    "q": "Suppose your company has just passed a security risk assessment exercise. The results display that the risk of the breach in the main company application is 50%. Security staff has taken some measures and implemented the necessary controls. After that, another security risk assessment was performed showing that risk has decreased to 10%. The risk threshold for the application is 20%. Which of the following risk decisions will be the best for the project in terms of its successful continuation with the most business profit?",
+    "options": [
+      "Accept the risk",
+      "Introduce more controls to bring risk to 0%",
+      "Mitigate the risk",
+      "Avoid the risk"
+    ],
+    "correct": 0,
+    "hint": "Compare the current residual risk (10%) against the maximum allowed threshold (20%).",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "________ is an attack type for a rogue Wi-Fi access point that appears to be a legitimate one offered on the premises, but actually has been set up to eavesdrop on wireless communications. It is the wireless version of the phishing scam.",
+    "options": [
+      "Evil Twin Attack",
+      "Sinkhole Attack",
+      "Collision Attack",
+      "Signal Jamming Attack"
+    ],
+    "correct": 0,
+    "hint": "This attack copies a trusted Wi-Fi network name to trick users into connecting.",
+    "domain": "Module 16: Hacking Wireless Networks"
+  },
+  {
+    "q": "Which of the following incident handling process phases is responsible for defining rules, collaborating human workforce, creating a back-up plan, and testing the plans for an organization?",
+    "options": [
+      "Preparation phase",
+      "Containment phase",
+      "Identification phase",
+      "Recovery phase"
+    ],
+    "correct": 0,
+    "hint": "This phase happens before an active attack ever occurs to build operational readiness.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "An attacker has installed a RAT on a host. The attacker wants to ensure that when a user attempts to go to 'www.MyPersonalBank.com', the user is directed to a phishing site. Which file does the attacker need to modify?",
+    "options": [
+      "Boot.ini",
+      "Sudoers",
+      "Networks",
+      "Hosts"
+    ],
+    "correct": 3,
+    "hint": "This local operating system file overrides external DNS server lookups.",
+    "domain": "Module 08: Sniffing"
+  },
+  {
+    "q": "Which of the following tools can be used to perform a zone transfer?",
+    "options": [
+      "Finger and Sam Spade",
+      "Netcat and Neotrace",
+      "NSLookup, Dig, and Host",
+      "None of the options"
+    ],
+    "correct": 2,
+    "hint": "Look for standard utilities built specifically for querying and troubleshooting DNS servers.",
+    "domain": "Module 04: Enumeration"
+  },
+  {
+    "q": "Which of the following is a component of a risk assessment?",
+    "options": [
+      "Administrative safeguards",
+      "Physical security",
+      "DMZ",
+      "Logical interface"
+    ],
+    "correct": 0,
+    "hint": "This includes the policies, procedures, and assessments managed by company leadership.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "You need to deploy a new web-based software package for your organization. The package requires three separate servers and needs to be available on the Internet. What is the recommended architecture in terms of server placement?",
+    "options": [
+      "All three servers need to be placed internally",
+      "A web server facing the Internet, an application server on the internal network, a database server on the internal network",
+      "A web server and the database server facing the Internet, an application server on the internal network",
+      "All three servers need to face the Internet so that they can communicate between themselves"
+    ],
+    "correct": 1,
+    "hint": "Keep sensitive database records isolated while only exposing the presentation layer web server.",
+    "domain": "Module 13: Hacking Web Servers"
+  },
+  {
+    "q": "You have successfully comprised a server having an IP address of 10.10.0.5. You would like to enumerate all machines in the same network quickly. What is the best Nmap command you will use?",
+    "options": [
+      "nmap -T4 -q 10.10.0.0/24",
+      "nmap -T4 -F 10.10.0.0/24",
+      "nmap -T4 -r 10.10.1.0/24",
+      "nmap -T4 -O 10.10.0.0/24"
+    ],
+    "correct": 1,
+    "hint": "The flag you want limits the port scan range to the top 100 most common ports instead of 1,000.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "Which of the following statements about a zone transfer is correct?",
+    "options": [
+      "A zone transfer is accomplished with DNS over TCP port 53 and copies the full zone information mapping.",
+      "A zone transfer passes all zone information that an nslookup server maintains exclusively.",
+      "Zone transfers cannot occur on the public Internet under any configuration.",
+      "Zone transfers use UDP port 53 exclusively for reliable replication."
+    ],
+    "correct": 0,
+    "hint": "Replicating entire DNS records requires a reliable connection provided by TCP port 53.",
+    "domain": "Module 04: Enumeration"
+  },
+  {
+    "q": "Bob received this text message on his mobile phone: 'Hello, this is Scott Smelby from the Yahoo Bank. Kindly contact me for a vital transaction on: scottsmelby@yahoo.com'. Which statement below is true?",
+    "options": [
+      "This is a scam as everybody can get a @yahoo address, not the Yahoo customer service employees.",
+      "This is a scam because Bob does not know Scott.",
+      "Bob should write to scottmelby@yahoo.com to verify the identity of Scott.",
+      "This is probably a legitimate message as it comes from a respectable organization."
+    ],
+    "correct": 0,
+    "hint": "Official institutions communicate through customized owned corporate domains rather than free public webmail providers.",
+    "domain": "Module 09: Social Engineering"
+  },
+  {
+    "q": "Which of the following programs is usually targeted at Microsoft Office products?",
+    "options": [
+      "Polymorphic virus",
+      "Multipart virus",
+      "Macro virus",
+      "Stealth virus"
+    ],
+    "correct": 2,
+    "hint": "This variety of threat utilizes application automation scripting engines embedded inside document layers.",
+    "domain": "Module 07: Malware Threats"
+  },
+  {
+    "q": "Bob, a network administrator at BigUniversity, realized that some students are connecting their notebooks in the wired network to have Internet access. In the university campus, there are many Ethernet ports available for professors and authorized visitors but not for students. He identified this when the IDS alerted for malware activities in the network. What should Bob do to avoid this problem?",
+    "options": [
+      "Disable unused ports in the switches",
+      "Separate students in a different VLAN",
+      "Use the 802.1x protocol",
+      "Ask students to use the wireless network"
+    ],
+    "correct": 2,
+    "hint": "This networking protocol standard provides port-based authentication barriers on hardware nodes.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "If a token and 4-digit personal identification number (PIN) are used to access a computer system and the token performs off-line checking for the correct PIN, what type of attack is possible?",
+    "options": [
+      "Birthday attack",
+      "Brute force attack",
+      "Man-in-the-middle attack",
+      "Smurf attack"
+    ],
+    "correct": 1,
+    "hint": "Offline verification lacks server connection to lockout a system, enabling an adversary to quickly run through combinations.",
+    "domain": "Module 06: System Hacking"
+  },
+  {
+    "q": "What is the role of test automation in security testing?",
+    "options": [
+      "It is an option but it tends to be very expensive.",
+      "It should be used exclusively as manual testing is entirely outdated.",
+      "Test automation is not usable in security due to complexity constraints.",
+      "It can accelerate benchmark tests and repeat them with a consistent test setup, but cannot replace manual testing completely."
+    ],
+    "correct": 3,
+    "hint": "Automation speeds up repeatable code scanning cycles but lacks human cognitive flexibility.",
+    "domain": "Module 05: Vulnerability Analysis"
+  },
+  {
+    "q": "What is the known plaintext attack used against DES which gives the result that encrypting plaintext with one DES key followed by encrypting it with a second DES key is no more secure than using a single key?",
+    "options": [
+      "Man-in-the-middle attack",
+      "Meet-in-the-middle attack",
+      "Replay attack",
+      "Traffic analysis attack"
+    ],
+    "correct": 1,
+    "hint": "This cryptographic approach relies on precomputing keys matching from opposite outer directions to an centerpoint.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "What term describes the amount of risk that remains after the vulnerabilities are classified and the countermeasures have been deployed?",
+    "options": [
+      "Residual risk",
+      "Impact risk",
+      "Deferred risk",
+      "Inherent risk"
+    ],
+    "correct": 0,
+    "hint": "This is calculated as the baseline inherent operational vulnerability minus control defenses.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "Which of the following is the BEST way to defend against network sniffing?",
+    "options": [
+      "Using encryption protocols to secure network communications",
+      "Register all machines MAC Address in a Centralized Database",
+      "Use Static IP Address",
+      "Restrict Physical Access to Server Rooms hosting Critical Servers"
+    ],
+    "correct": 0,
+    "hint": "Using cryptographic tunnels turns raw data captures into unreadable text strings.",
+    "domain": "Module 08: Sniffing"
+  },
+  {
+    "q": "What does the -oX flag do in an Nmap scan?",
+    "options": [
+      "Perform an eXpress scan",
+      "Output the results in truncated format to the screen",
+      "Output the results in XML format to a file",
+      "Perform an Xmas scan"
+    ],
+    "correct": 2,
+    "hint": "This saves your results into a structured format commonly parsed by other tools.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "During a Windows network assessment, a custom username account maps to a Security Identifier (SID) ending in the Relative Identifier (RID) value of 500. What does this confirm?",
+    "options": [
+      "That the account has an unalterable system ID of 500",
+      "These commands demonstrate that the guest account has NOT been disabled",
+      "These commands demonstrate that the guest account has been disabled",
+      "That the true root administrator profile is being utilized"
+    ],
+    "correct": 3,
+    "hint": "Windows reserves RID 500 exclusively for the core built-in administrator account regardless of name adjustments.",
+    "domain": "Module 06: System Hacking"
+  },
+  {
+    "q": "A technician is resolving an issue where a computer is unable to connect to the Internet using a wireless access point. The computer is able to transfer files locally to other machines, but cannot successfully reach the Internet. When the technician examines the IP address and default gateway they are both on the 192.168.1.0/24 subnet. Which of the following has occurred?",
+    "options": [
+      "The computer is not using a private IP address.",
+      "The gateway is not routing to a public IP address.",
+      "The gateway and the computer are not on the same network.",
+      "The computer is using an invalid IP address."
+    ],
+    "correct": 1,
+    "hint": "Private network IPs require a mechanism like NAT on the gateway to translate and route traffic onto the public internet.",
+    "domain": "Module 16: Hacking Wireless Networks"
+  },
+  {
+    "q": "Which of the following options represents a wireless reconnaissance utility used to discover and map targets rather than an active exploit attack tool against Bluetooth hardware?",
+    "options": [
+      "Bluedriving",
+      "Bluesmacking",
+      "Bluejacking",
+      "Bluesnarfing"
+    ],
+    "correct": 0,
+    "hint": "This tool focuses on capturing Bluetooth data alongside GPS coordinates to audit device location history.",
+    "domain": "Module 16: Hacking Wireless Networks"
+  },
+  {
+    "q": "A new wireless client is configured to join an 802.11 network. The client can see the network, but cannot connect. A wireless packet sniffer shows that the Wireless Access Point (WAP) is not responding to the association requests being sent by the wireless client. What is a possible source of this problem?",
+    "options": [
+      "The WAP does not recognize the client's MAC address",
+      "The client cannot see the SSID of the wireless network",
+      "Client is configured for the wrong channel",
+      "The wireless client is not configured to use DHCP"
+    ],
+    "correct": 0,
+    "hint": "WAPs use strict hardware filters to drop connection entries from unrecognized Layer 2 addresses.",
+    "domain": "Module 16: Hacking Wireless Networks"
+  },
+  {
+    "q": "When gathering information about a web server, it is critical to discover enabled HTTP Methods. Which Nmap script safely automates the discovery of methods like GET, POST, PUT, and DELETE?",
+    "options": [
+      "http-methods",
+      "http-enum",
+      "http-headers",
+      "http-git"
+    ],
+    "correct": 0,
+    "hint": "The script name directly references the specific target state it is checking for on the endpoint web root.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "Which of the following Linux terminal commands will resolve a targeted domain name into its fundamental IPv4 address record?",
+    "options": [
+      "host -t a hackeddomain.com",
+      "host -t ns hackeddomain.com",
+      "host -t soa hackeddomain.com",
+      "host -t AXFR hackeddomain.com"
+    ],
+    "correct": 0,
+    "hint": "Look for the specific DNS record type designation string used to handle basic host address mappings.",
+    "domain": "Module 02: Footprinting and Reconnaissance"
+  },
+  {
+    "q": "Which phase of the incident response lifecycle is explicitly mapping out communication escalation matrices, establishing cross-department contact protocols, and creating an alternative power supply matrix?",
+    "options": [
+      "Preparation",
+      "Containment",
+      "Eradication",
+      "Lessons Learned"
+    ],
+    "correct": 0,
+    "hint": "This stage occurs prior to any actual system compromise to ensure organizational alignment and baseline defense posture.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "An administrator notices that a threat actor is trying to bypass network firewalls by altering the source IP address values inside packet headers to resemble internal addresses. What is this technique called?",
+    "options": [
+      "IP Spoofing",
+      "ARP Poisoning",
+      "MAC Flooding",
+      "DNS Cache Poisoning"
+    ],
+    "correct": 0,
+    "hint": "This technique manipulates layer-3 metadata headers to trick receiving nodes into trusting the sender's origin identity.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "Which specific category of system vulnerabilities allows a local or remote user to execute commands with security privileges higher than those originally assigned to their account?",
+    "options": [
+      "Privilege Escalation",
+      "Cross-Site Scripting",
+      "SQL Injection",
+      "Denial of Service"
+    ],
+    "correct": 0,
+    "hint": "This exploitation pathway focuses on shifting from a lower tier of control access to a administrative or root tier.",
+    "domain": "Module 06: System Hacking"
+  },
+  {
+    "q": "Which cryptographic algorithm structure relies on two distinct keys—one public for encryption and one private for decryption—to establish a secure communication channel?",
+    "options": [
+      "Asymmetric Cryptography",
+      "Symmetric Cryptography",
+      "Hashing Function",
+      "Stream Cipher"
+    ],
+    "correct": 0,
+    "hint": "This technique is also known as public-key cryptography and removes the challenge of securely sharing a single secret key.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "A security analyst needs to review authentication anomalies across a Linux infrastructure. Which system log path should they prioritize for tracking failed login attempts and privilege elevation runs?",
+    "options": [
+      "/var/log/auth.log",
+      "/var/log/syslog",
+      "/var/log/dmesg",
+      "/var/log/nginx/access.log"
+    ],
+    "correct": 0,
+    "hint": "This specific file stores all authorization events, including successful and failed system access adjustments.",
+    "domain": "Module 06: System Hacking"
+  },
+  {
+    "q": "An attacker intercepts communication between a client and a server to quietly modify the payload data before passing it on, without either party realizing an intrusion has occurred. What type of attack is this?",
+    "options": [
+      "Man-in-the-Middle (MitM) Attack",
+      "Replay Attack",
+      "Denial of Service Attack",
+      "Dictionary Attack"
+    ],
+    "correct": 0,
+    "hint": "The attacker positions themselves directly inside the communication path to manipulate active traffic in real time.",
+    "domain": "Module 08: Sniffing"
+  },
+  {
+    "q": "Which phase of the Cyber Kill Chain model focuses on pairing an exploit payload with a delivery mechanism, such as embedding it within an email attachment or a corrupted PDF?",
+    "options": [
+      "Weaponization",
+      "Reconnaissance",
+      "Delivery",
+      "Exploitation"
+    ],
+    "correct": 0,
+    "hint": "This step involves preparing and bundling the threat material before it is transmitted to the target environment.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "What type of malware is explicitly designed to lock a user's local operating system or encrypt their file structures, demanding a financial payment to restore system accessibility?",
+    "options": [
+      "Ransomware",
+      "Spyware",
+      "Rootkit",
+      "Adware"
+    ],
+    "correct": 0,
+    "hint": "This software payload takes asset access hostage to extort money from the victim organization.",
+    "domain": "Module 07: Malware Threats"
+  },
+  {
+    "q": "A security engineer must identify the version details running on a remote web server node. Which testing technique relies on reading the text strings returned by the server header during an initial connection attempt?",
+    "options": [
+      "Banner Grabbing",
+      "Fuzzing",
+      "Source Code Review",
+      "Brute Forcing"
+    ],
+    "correct": 0,
+    "hint": "This inspection method analyzes the introductory application meta-headers sent over open ports.",
+    "domain": "Module 02: Footprinting and Reconnaissance"
+  },
+  {
+    "q": "An organization wants to capture and study the behavior of active network attackers by deploying a decoy computer system that mimics production data but contains no actual corporate assets. What is this decoy called?",
+    "options": [
+      "Honeypot",
+      "Proxy Server",
+      "Bastion Host",
+      "Demilitarized Zone"
+    ],
+    "correct": 0,
+    "hint": "It acts as an intentional trap designed to attract malicious probes away from real target environments.",
+    "domain": "Module 12: Evading IDS, Firewalls, and Honeypots"
+  },
+  {
+    "q": "Which type of penetration test provides the analyst with absolute, comprehensive details regarding internal network architectures, complete source code blueprints, and server configuration layouts?",
+    "options": [
+      "White Box Testing",
+      "Black Box Testing",
+      "Gray Box Testing",
+      "Blind Testing"
+    ],
+    "correct": 0,
+    "hint": "The operator functions with complete transparency and full prior architectural familiarity before launching the security assessment.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "A security system records log activities indicating that a web application is unexpectedly interpreting a user input string as a series of system commands. This behavior allows database fields to be queried without authorization. What class of vulnerability is this?",
+    "options": [
+      "SQL Injection (SQLi)",
+      "Cross-Site Request Forgery (CSRF)",
+      "Buffer Overflow",
+      "Broken Object Level Authorization"
+    ],
+    "correct": 0,
+    "hint": "This exploit occurs when unvalidated input strings manipulate the back-end database syntax engine.",
+    "domain": "Module 15: SQL Injection"
+  },
+  {
+    "q": "Which industry regulation is explicitly mandatory for any global enterprise or web entity that handles, processes, or transmits credit card transactions and cardholder identity metadata?",
+    "options": [
+      "PCI-DSS",
+      "HIPAA",
+      "SOX",
+      "GDPR"
+    ],
+    "correct": 0,
+    "hint": "This standard is managed by the Payment Card Industry Security Standards Council to prevent transaction breaches.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "What scanning approach maps an entirely automated loop of malformed, randomized, or unexpected input strings into an application interface to identify unhandled exceptions and software crashes?",
+    "options": [
+      "Fuzzing",
+      "Static Analysis",
+      "Regression Testing",
+      "Code Review"
+    ],
+    "correct": 0,
+    "hint": "This security testing method uses automated stress inputs to identify hidden code flaws and boundary conditions.",
+    "domain": "Module 14: Hacking Web Applications"
+  },
+  {
+    "q": "Corporate system administrator must secure data passing across a public Wi-Fi connection. Which cryptographic mechanism establishes an encrypted tunnel over the internet to securely link a remote laptop back to the company network?",
+    "options": [
+      "Virtual Private Network (VPN)",
+      "Domain Name System Security Extensions (DNSSEC)",
+      "Network Address Translation (NAT)",
+      "Simple Network Management Protocol (SNMP)"
+    ],
+    "correct": 0,
+    "hint": "This approach encapsulates client traffic within a protected layer to shield it from local sniffing attempts.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "Which type of firewall inspects data traffic at Layer 7 of the OSI model, checking specific protocol payloads and tracking application-layer state contexts?",
+    "options": [
+      "Application-Layer Firewall",
+      "Packet-Filtering Firewall",
+      "Circuit-Level Gateway",
+      "Stateful Inspection Firewall"
+    ],
+    "correct": 0,
+    "hint": "This security barrier inspects deep packet contents, evaluating the high-level application data directly.",
+    "domain": "Module 12: Evading IDS, Firewalls, and Honeypots"
+  },
+  {
+    "q": "An organization experiences an issue where users are redirected to a fraudulent server when typing a valid web URL. Investigations reveal the local server cache has been altered with forged mappings. What type of attack is this?",
+    "options": [
+      "DNS Cache Poisoning",
+      "MAC Spoofing",
+      "ARP Poisoning",
+      "DHCP Starvation"
+    ],
+    "correct": 0,
+    "hint": "This malicious technique compromises the name-resolution repository to direct users to incorrect server locations.",
+    "domain": "Module 08: Sniffing"
+  },
+  {
+    "q": "What core objective of the CIA Triad focuses on ensuring that system information and computational resources remain accessible and functional for authorized users whenever needed?",
+    "options": [
+      "Availability",
+      "Confidentiality",
+      "Integrity",
+      "Authenticity"
+    ],
+    "correct": 0,
+    "hint": "This concept ensures that hardware platforms, services, and networks experience minimal downtime during operational hours.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "Which protocol uses public-key cryptography to safely sign and protect directory data transmissions between domain name servers, preventing response data falsification?",
+    "options": [
+      "DNSSEC",
+      "HTTPS",
+      "SFTP",
+      "IPsec"
+    ],
+    "correct": 0,
+    "hint": "This mechanism validates data records by adding cryptographic certificates to existing DNS lookups.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "An administrator detects thousands of ICMP echo requests targeting a single server broadcast address, causing the system resources to collapse under the traffic load. What type of attack is this?",
+    "options": [
+      "Smurf Attack",
+      "SQL Injection",
+      "Cross-Site Scripting",
+      "Buffer Overflow"
+    ],
+    "correct": 0,
+    "hint": "This legacy denial-of-service vector uses network amplification to overwhelm a destination host with echo replies.",
+    "domain": "Module 10: Denial-of-Service"
+  },
+  {
+    "q": "Which scanning tool or command parameter combination checks a remote host using an alternate 'Xmas tree packet' layout, setting the FIN, URG, and PUSH flags simultaneously?",
+    "options": [
+      "nmap -sX",
+      "nmap -sS",
+      "nmap -sT",
+      "nmap -sU"
+    ],
+    "correct": 0,
+    "hint": "This scanning technique turns on specific bits in the packet header to observe how different operating systems react to unusual flags.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "What specific access control mechanism uses strict, unalterable criteria defined by system administrators or security policies to regulate asset access, regardless of individual user preferences?",
+    "options": [
+      "Mandatory Access Control (MAC)",
+      "Discretionary Access Control (DAC)",
+      "Role-Based Access Control (RBAC)",
+      "Rule-Based Access Control"
+    ],
+    "correct": 0,
+    "hint": "This authorization framework uses system-enforced labels and security clearance levels to restrict user activities.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "A security analyst needs to review web transaction logs to investigate an issue where a user was tricked into executing unauthorized commands on a trusted web application. What type of attack is this?",
+    "options": [
+      "Cross-Site Request Forgery (CSRF)",
+      "SQL Injection",
+      "Buffer Overflow",
+      "Directory Traversal"
+    ],
+    "correct": 0,
+    "hint": "This vulnerability leverages a user's active session state to submit malicious commands without their awareness.",
+    "domain": "Module 14: Hacking Web Applications"
+  },
+  {
+    "q": "Which hashing algorithm generates a fixed 160-bit message digest to verify file integrity, though it is now avoided for critical security contexts due to collision vulnerabilities?",
+    "options": [
+      "SHA-1",
+      "MD5",
+      "AES",
+      "RSA"
+    ],
+    "correct": 0,
+    "hint": "This cryptographic algorithm creates a longer digest value than MD5 but has been replaced by the stronger SHA-2 family.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "What testing process introduces unexpected, malformed, or entirely random datasets into an application's input fields to find hidden code exceptions and memory leakage issues?",
+    "options": [
+      "Fuzz Testing",
+      "Static Inspection",
+      "Code Review",
+      "Unit Verification"
+    ],
+    "correct": 0,
+    "hint": "This dynamic testing method uses automated invalid values to stress-test target entry boundaries.",
+    "domain": "Module 14: Hacking Web Applications"
+  },
+  {
+    "q": "Which type of malware covers up its tracking presence by injecting code into key system files and directly modifying fundamental operating system API calls to hide active processes and folders from the Task Manager?",
+    "options": [
+      "Rootkit",
+      "Trojan Horse",
+      "Spyware",
+      "Logic Bomb"
+    ],
+    "correct": 0,
+    "hint": "This complex payload operates deep within the kernel layer to mask its traces from regular antivirus detection scans.",
+    "domain": "Module 06: System Hacking"
+  },  
+ {
+    "q": "An engineering firm needs to monitor system activities and capture granular file updates across a remote database platform without interrupting operational flows. Which security mechanism handles real-time detection analysis?",
+    "options": [
+      "Intrusion Detection System (IDS)",
+      "Intrusion Prevention System (IPS)",
+      "Static Packet Filter",
+      "Circuit Gateway"
+    ],
+    "correct": 0,
+    "hint": "This visibility tool uses passive tracking probes to report anomalies without blocking network connections.",
+    "domain": "Module 12: Evading IDS, Firewalls, and Honeypots"
+  },
+  {
+    "q": "A network technician runs a diagnostic check to review open connections. Which port should they check to audit unencrypted telnet traffic passing onto local switches?",
+    "options": [
+      "Port 23",
+      "Port 22",
+      "Port 443",
+      "Port 80"
+    ],
+    "correct": 0,
+    "hint": "This legacy protocol maps to a cleartext remote console access port that should be disabled in favor of SSH.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "Which biometric metrics layer measures the general likelihood that an access controller will mistakenly grant systems entry to an unauthorized user?",
+    "options": [
+      "False Acceptance Rate (FAR)",
+      "False Rejection Rate (FRR)",
+      "Crossover Error Rate (CER)",
+      "Failure to Enroll Rate (FER)"
+    ],
+    "correct": 0,
+    "hint": "This measurement describes a Type II biometric processing error where an imposter is incorrectly authenticated.",
+    "domain": "Module 06: System Hacking"
+  },
+  {
+    "q": "An administrative security group must evaluate the maximum amount of time an organization can afford to have a critical server down before major operational disruptions occur. What is this value?",
+    "options": [
+      "Recovery Time Objective (RTO)",
+      "Recovery Point Objective (RPO)",
+      "Maximum Tolerable Downtime (MTD)",
+      "Annualized Rate of Occurrence (ARO)"
+    ],
+    "correct": 2,
+    "hint": "This baseline timeline outlines the absolute outer limits of survival duration for corporate functional processes.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "What specialized security testing device sits transparently between network endpoints to capture, inspect, and decode the raw binary contents of data frames passing over a wired medium?",
+    "options": [
+      "Protocol Analyzer",
+      "Vulnerability Scanner",
+      "Port Scanner",
+      "Honeypot"
+    ],
+    "correct": 0,
+    "hint": "This device or software solution intercepts raw packets to debug communication structures or sniff cleartext payloads.",
+    "domain": "Module 08: Sniffing"
+  },
+  {
+    "q": "Which structural security control objective focuses on preventing unauthorized users from modifying data records, ensuring system configurations remain accurate and untampered with?",
+    "options": [
+      "Integrity",
+      "Confidentiality",
+      "Availability",
+      "Non-repudiation"
+    ],
+    "correct": 0,
+    "hint": "This principle relies on hashing and digital signatures to confirm that assets are not altered in transit.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "A penetration tester needs to quickly determine which active hosts exist within a 192.168.1.0/24 network segment using a simple ping sweep. Which Nmap command parameters accomplish this?",
+    "options": [
+      "nmap -sn 192.168.1.0/24",
+      "nmap -sS 192.168.1.0/24",
+      "nmap -sO 192.168.1.0/24",
+      "nmap -sV 192.168.1.0/24"
+    ],
+    "correct": 0,
+    "hint": "This parameter choice instructs the scanner to skip port discovery loops entirely after identifying live hosts.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "Which cryptographic approach applies a fixed mathematical function to variable-length input strings to generate a unique, irreversible, fixed-size value for verifying software download files?",
+    "options": [
+      "Hashing",
+      "Symmetric Encryption",
+      "Asymmetric Encryption",
+      "Salting"
+    ],
+    "correct": 0,
+    "hint": "This mathematical transformation is a one-way mechanism that cannot be reversed to discover the original plaintext data.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "An analyst uncovers a network scanning loop where a threat actor sends TCP synchronization requests but drops the connection immediately upon receiving a response, preventing full handshakes. What type of scan is this?",
+    "options": [
+      "TCP SYN Scan (Half-Open)",
+      "TCP Connect Scan",
+      "UDP Scan",
+      "FIN Scan"
+    ],
+    "correct": 0,
+    "hint": "This stealthy scanning approach avoids opening a complete connection stream to keep probes hidden from basic system logs.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "What security methodology limits individual user and process accounts to the bare minimum permission rights required to complete their core daily tasks?",
+    "options": [
+      "Principle of Least Privilege",
+      "Separation of Duties",
+      "Defense in Depth",
+      "Implicit Deny"
+    ],
+    "correct": 0,
+    "hint": "This structural restriction helps limit potential operational blast radii during a system credentials compromise.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "An administrator uncovers an ongoing application loop execution fault where an application receives more inputs than its processing storage allocation can support, leading to code execution changes. What is this vulnerability?",
+    "options": [
+      "Buffer Overflow",
+      "SQL Injection",
+      "Cross-Site Scripting",
+      "Directory Traversal"
+    ],
+    "correct": 0,
+    "hint": "This memory allocation boundary fault overflows target hardware stack bounds to hijack instructional pointers.",
+    "domain": "Module 14: Hacking Web Applications"
+  },
+  {
+    "q": "Which specific protocol relies on public-key infrastructure elements to verify identity mappings and safely secure transaction payloads over the web on port 443?",
+    "options": [
+      "HTTPS",
+      "HTTP",
+      "FTP",
+      "SSH"
+    ],
+    "correct": 0,
+    "hint": "This web protection framework combines standard connection models with SSL/TLS wrapper tunnels.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "A forensic analyst reviews system states following a compromise. Which storage region should be captured first according to the Order of Volatility rules?",
+    "options": [
+      "CPU Registers and Cache",
+      "Routing Tables and ARP Cache",
+      "System RAM",
+      "Hard Disk Drive Data"
+    ],
+    "correct": 0,
+    "hint": "Always target the fastest, most volatile hardware tracking spaces first before values clear.",
+    "domain": "Module 06: System Hacking"
+  },
+  {
+    "q": "What network security architecture strategy splits an internal network structure into distinct, micro-isolated compartments to contain potential compromises?",
+    "options": [
+      "Network Segmentation",
+      "Network Address Translation",
+      "Load Balancing",
+      "Port Mirroring"
+    ],
+    "correct": 0,
+    "hint": "This defense practice isolates high-risk application boundaries from general system assets.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "An operations team needs to deploy an alternate emergency operations data recovery facility containing data links but missing live server hardware nodes. What type of facility is this?",
+    "options": [
+      "Warm Site",
+      "Hot Site",
+      "Cold Site",
+      "Mobile Site"
+    ],
+    "correct": 0,
+    "hint": "This configuration balances disaster management preparation investments by housing structural data pipelines without full-scale redundant hardware running.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "Which security metric calculates the typical expected operational lifespan length of a critical infrastructure hardware component before a physical wear fault occurs?",
+    "options": [
+      "Mean Time Between Failures (MTBF)",
+      "Mean Time to Repair (MTTR)",
+      "Annualized Rate of Occurrence (ARO)",
+      "Single Loss Expectancy (SLE)"
+    ],
+    "correct": 0,
+    "hint": "This value determines equipment durability averages to help administrators schedule hardware cycles.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "What specific operational access management practice splits critical security responsibilities between multiple administrative staff to minimize fraud risks?",
+    "options": [
+      "Separation of Duties",
+      "Least Privilege",
+      "Job Rotation",
+      "Mandatory Vacations"
+    ],
+    "correct": 0,
+    "hint": "This control structure ensures that malicious transactions require collusion between different positions.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "A corporate monitoring center flags an event log pattern where an external entity attempts to map out open perimeter doors by sending sequential ICMP pings across a target IP range. What is this activity?",
+    "options": [
+      "Ping Sweep",
+      "SYN Flood",
+      "Smurf Attack",
+      "Replay Probe"
+    ],
+    "correct": 0,
+    "hint": "This initial host discovery method checks for responsive devices within a specified IP block.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "Which specific risk management parameter tracks the estimated frequency at which a identified hazard threat vector is expected to exploit system assets over a twelve-month window?",
+    "options": [
+      "Annualized Rate of Occurrence (ARO)",
+      "Single Loss Expectancy (SLE)",
+      "Annualized Loss Expectancy (ALE)",
+      "Exposure Factor (EF)"
+    ],
+    "correct": 0,
+    "hint": "This metric helps calculate baseline cost-benefit balances for proposed defense controls.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "What specialized security platform maps corporate event logs across networks, firewalls, and endpoints in real-time to correlate security anomalies and trigger alerts?",
+    "options": [
+      "SIEM",
+      "SIEM-Lite",
+      "DHCP Tracker",
+      "Wireshark Agent"
+    ],
+    "correct": 0,
+    "hint": "This centralized aggregation system provides log management and cross-platform analysis.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "An analyst uncovers an attack vector where an adversary floods local switch tables with fraudulent Layer 2 address details, forcing the switch to broadcast traffic out of all ports. What is this technique?",
+    "options": [
+      "MAC Flooding",
+      "ARP Spoofing",
+      "VLAN Hopping",
+      "IP Hijacking"
+    ],
+    "correct": 0,
+    "hint": "This hardware-level exploitation targeting switch CAM tables disrupts standard frame direction maps.",
+    "domain": "Module 08: Sniffing"
+  },
+  {
+    "q": "Which symmetric block cipher mechanism encrypts plaintext blocks independently using the exact same key sequence, making it highly susceptible to pattern analysis?",
+    "options": [
+      "Electronic Codebook (ECB)",
+      "Cipher Block Chaining (CBC)",
+      "Galois/Counter Mode (GCM)",
+      "Cipher Feedback (CFB)"
+    ],
+    "correct": 0,
+    "hint": "This foundational mode lacks initialization vectors, meaning identical plaintext inputs yield identical ciphertext blocks.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "What specific access control design relies explicitly on groups or tags assigned to users by their job category or corporate title rather than individual user clearances?",
+    "options": [
+      "Role-Based Access Control (RBAC)",
+      "Mandatory Access Control (MAC)",
+      "Discretionary Access Control (DAC)",
+      "Attribute-Based Access Control (ABAC)"
+    ],
+    "correct": 0,
+    "hint": "This administration strategy updates infrastructure credentials based on shifting operational profiles.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "A company requires employees to present a smart ID card and complete a fingerprint scan to enter a secure research lab. What category of authentication is being used?",
+    "options": [
+      "Multi-Factor Authentication (MFA)",
+      "Single-Factor Authentication",
+      "Knowledge-Based Authentication",
+      "Discretionary Authorization"
+    ],
+    "correct": 0,
+    "hint": "This approach enhances access security by combining something you have with something you are.",
+    "domain": "Module 06: System Hacking"
+  },
+  {
+    "q": "What risk management response strategy involves transferring the potential financial burden of a security breach or operational failure to a third-party underwriter?",
+    "options": [
+      "Risk Transference",
+      "Risk Mitigation",
+      "Risk Acceptance",
+      "Risk Avoidance"
+    ],
+    "correct": 0,
+    "hint": "Purchasing a cyber-insurance policy is a primary example of executing this specific strategic choice.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "Which scanning tool parameter tells Nmap to run an intense version detection sweep against open ports to check application daemon naming and build details?",
+    "options": [
+      "nmap -sV",
+      "nmap -O",
+      "nmap -sS",
+      "nmap -Pn"
+    ],
+    "correct": 0,
+    "hint": "This parameter queries available response banners and handles complex program banners to extract infrastructure information.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "An engineer flags an unexpected pattern where a user modifies a web address parameter from 'index.php?page=home' to 'index.php?page=../../etc/passwd'. What attack is being attempted?",
+    "options": [
+      "Directory Traversal",
+      "SQL Injection",
+      "Buffer Overflow",
+      "XSS Injection"
+    ],
+    "correct": 0,
+    "hint": "This validation flaw allows an attacker to escape web root directory boundaries using relative path sequences.",
+    "domain": "Module 14: Hacking Web Applications"
+  },
+  {
+    "q": "Which cryptographic property ensures that a sender cannot falsely deny having transmitted a specific message or validating a specific system transaction?",
+    "options": [
+      "Non-repudiation",
+      "Confidentiality",
+      "Availability",
+      "Integrity"
+    ],
+    "correct": 0,
+    "hint": "This legal security guarantee is built by pairing digital signature structures with public key infrastructures.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "What type of technical security control explicitly stops unauthorized activities from executing as they occur, rather than simply recording the event log for audit loops?",
+    "options": [
+      "Preventive Control",
+      "Detective Control",
+      "Corrective Control",
+      "Deterrent Control"
+    ],
+    "correct": 0,
+    "hint": "Examples of this active enforcement mechanism include firewalls and access isolation rules.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "An analyst evaluates log streams showing that an adversary is trying to crack user keys by processing precomputed cryptographic hashes of common words and passwords. What is this file or list called?",
+    "options": [
+      "Rainbow Table",
+      "Dictionary File",
+      "Salting Record",
+      "Brute Log"
+    ],
+    "correct": 0,
+    "hint": "This attack structure saves time by trading processor overhead for storage space filled with precomputed lookups.",
+    "domain": "Module 06: System Hacking"
+  },
+  {
+    "q": "Which type of cloud deployment model provides computing infrastructure used exclusively by a single business or organization, offering the highest level of control and security?",
+    "options": [
+      "Private Cloud",
+      "Public Cloud",
+      "Hybrid Cloud",
+      "Community Cloud"
+    ],
+    "correct": 0,
+    "hint": "This model is managed internally or by a third party but is completely dedicated to one enterprise.",
+    "domain": "Module 19: Cloud Computing"
+  },
+  {
+    "q": "An administrator configures an external perimeter network to segment public-facing systems, such as mail and web servers, from the internal private database environment. What is this isolation zone called?",
+    "options": [
+      "Demilitarized Zone (DMZ)",
+      "Intranets Boundary",
+      "Virtual Private Network",
+      "Air-Gapped Segment"
+    ],
+    "correct": 0,
+    "hint": "It acts as a buffer region preventing external traffic from directly interfacing with core internal network assets.",
+    "domain": "Module 13: Hacking Web Servers"
+  },
+  {
+    "q": "What specific operational vulnerability exists when an application accepts an untrusted input file containing external entity references, which are then processed by a poorly configured XML parser?",
+    "options": [
+      "XML External Entity (XXE)",
+      "Cross-Site Scripting (XSS)",
+      "SQL Injection (SQLi)",
+      "Command Injection"
+    ],
+    "correct": 0,
+    "hint": "This exploit can expose local server files, interact with internal networks, or induce a denial of service.",
+    "domain": "Module 14: Hacking Web Applications"
+  },
+  {
+    "q": "Which phase of the Software Development Life Cycle (SDLC) involves defining security requirements, conducting threat modeling exercises, and planning defensive architectures before writing source code?",
+    "options": [
+      "Design Phase",
+      "Implementation Phase",
+      "Testing Phase",
+      "Deployment Phase"
+    ],
+    "correct": 0,
+    "hint": "This conceptual step establishes structural security baselines prior to physical software construction tasks.",
+    "domain": "Module 14: Hacking Web Applications"
+  },
+  {
+    "q": "A security auditor discovers that an operational server relies on a default vendor password that was never modified during deployment. What specific category of security vulnerability is this?",
+    "options": [
+      "Security Misconfiguration",
+      "Broken Authentication",
+      "Insecure Deserialization",
+      "Injection Fault"
+    ],
+    "correct": 0,
+    "hint": "This widespread risk stems from deploying out-of-the-box infrastructure without auditing baseline settings.",
+    "domain": "Module 13: Hacking Web Servers"
+  },
+  {
+    "q": "What network utility parameter should an engineer append to a standard Traceroute or Ping command on Windows to force the network adapter to resolve a target hostname to its specific IPv6 address layout?",
+    "options": [
+      "-6",
+      "-4",
+      "-a",
+      "-t"
+    ],
+    "correct": 0,
+    "hint": "Look for the numeric parameter flag explicitly representing the modern 128-bit internet protocol standard version.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "Which foundational element of data protection focuses on scrambling plaintext records using complex mathematical functions so that only parties possessing the correct cryptographic key can read them?",
+    "options": [
+      "Encryption",
+      "Hashing",
+      "Salting",
+      "Obfuscation"
+    ],
+    "correct": 0,
+    "hint": "Unlike hashing, this process is explicitly designed to be bidirectional so data can be securely decoded later.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "An analyst reviews network infrastructure alerts flagging an active attack where an adversary spoofs communication signals to intercept or alter modern wireless vehicle-to-infrastructure telemetry. What specific domain is targeted?",
+    "options": [
+      "IoT and Automotive Security",
+      "Legacy Mainframe Systems",
+      "Static Office Printers",
+      "Air-Gapped Data Warehouses"
+    ],
+    "correct": 0,
+    "hint": "This sector involves smart transportation grids, electronic control units, and vehicular communication meshes.",
+    "domain": "Module 18: IoT and OT Hacking"
+  },
+  {
+    "q": "Which access control model relies on attributes such as current system time, physical login location, and device security compliance parameters to dynamically evaluate user access requests?",
+    "options": [
+      "Attribute-Based Access Control (ABAC)",
+      "Role-Based Access Control (RBAC)",
+      "Mandatory Access Control (MAC)",
+      "Discretionary Access Control (DAC)"
+    ],
+    "correct": 0,
+    "hint": "This versatile approach evaluates a combination of subject, object, and contextual environmental factors.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "What type of technical security control relies on automated heuristics or known threat signatures to actively block network attacks, reset connections, and drop malicious packets before they reach internal servers?",
+    "options": [
+      "Intrusion Prevention System (IPS)",
+      "Intrusion Detection System (IDS)",
+      "Passive Protocol Sniffer",
+      "Syslog Aggregator Agent"
+    ],
+    "correct": 0,
+    "hint": "Unlike passive monitoring systems, this inline control tool takes immediate defensive action to mitigate real-time risks.",
+    "domain": "Module 12: Evading IDS, Firewalls, and Honeypots"
+  },
+  {
+    "q": "Which specific protocol relies on asymmetric cryptography and digital signatures to secure communications between an email client and an email server?",
+    "options": [
+      "S/MIME",
+      "SMTP",
+      "POP3",
+      "IMAP"
+    ],
+    "correct": 0,
+    "hint": "This standard encrypts and signs email messages directly rather than relying solely on transport-layer encryption.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "An administrator uncovers an incident where a user was tricked into providing sensitive financial details over the phone by an attacker pretending to be a bank agent. What type of attack is this?",
+    "options": [
+      "Vishing",
+      "Phishing",
+      "Smishing",
+      "Whaling"
+    ],
+    "correct": 0,
+    "hint": "This term combines 'voice' and 'phishing' to describe social engineering over telephone networks.",
+    "domain": "Module 09: Social Engineering"
+  },
+  {
+    "q": "Which component of an operating system sits at the core layer, directly managing hardware resources, memory allocation, and CPU scheduling for all software processes?",
+    "options": [
+      "Kernel",
+      "Shell",
+      "User Interface",
+      "File System"
+    ],
+    "correct": 0,
+    "hint": "This foundational layer executes with the highest system privileges to broker hardware access.",
+    "domain": "Module 06: System Hacking"
+  },
+  {
+    "q": "A security team implements a policy requiring two separate passwords from different executives to authorize a critical system recovery sequence. What security principle is being enforced?",
+    "options": [
+      "Dual Control",
+      "Least Privilege",
+      "Job Rotation",
+      "Mandatory Vacation"
+    ],
+    "correct": 0,
+    "hint": "This practice ensures that a single individual cannot execute a high-risk operation without verification.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  },
+  {
+    "q": "What specific category of cryptographic attack involves trying every possible key combination systematically until the correct one is discovered to decrypt ciphertext?",
+    "options": [
+      "Brute Force Attack",
+      "Dictionary Attack",
+      "Rainbow Table Attack",
+      "Birthday Attack"
+    ],
+    "correct": 0,
+    "hint": "This exhaustive search method guarantees discovery given enough time, computational power, and key space limits.",
+    "domain": "Module 20: Cryptography"
+  },
+  {
+    "q": "Which network topology connects every individual host node directly to every other node in the network, offering maximum redundancy and fault tolerance?",
+    "options": [
+      "Full Mesh Topology",
+      "Star Topology",
+      "Bus Topology",
+      "Ring Topology"
+    ],
+    "correct": 0,
+    "hint": "While highly resilient, this architecture becomes complex and expensive to scale due to the number of link paths required.",
+    "domain": "Module 03: Scanning Networks"
+  },
+  {
+    "q": "An analyst notes that a malware variant modifies its internal code structure slightly with each new infection iteration while retaining its original malicious payload functionality. What is this malware called?",
+    "options": [
+      "Polymorphic Malware",
+      "Rootkit Malware",
+      "Logic Bomb",
+      "Ransomware"
+    ],
+    "correct": 0,
+    "hint": "This structural mutation helps the threat evade classic file-hash signature matching used by traditional antivirus engines.",
+    "domain": "Module 07: Malware Threats"
+  },
+  {
+    "q": "Which data transmission standard provides secure terminal emulation over an IP network, encrypting both the authentication credentials and the session data stream?",
+    "options": [
+      "SSH",
+      "Telnet",
+      "Rlogin",
+      "FTP"
+    ],
+    "correct": 0,
+    "hint": "This utility operates on TCP port 22 and serves as the secure replacement for cleartext administrative protocols.",
+    "domain": "Module 06: System Hacking"
+  },
+  {
+    "q": "A systems manager must evaluate the quantitative value representing the estimated monetary loss exposure experienced each time a single hazard vector compromises an asset. What is this value?",
+    "options": [
+      "Single Loss Expectancy (SLE)",
+      "Annualized Loss Expectancy (ALE)",
+      "Exposure Factor (EF)",
+      "Asset Value (AV)"
+    ],
+    "correct": 0,
+    "hint": "This parameter is determined directly by multiplying the overall asset value by the exposure percentage.",
+    "domain": "Module 01: Introduction to Ethical Hacking"
+  }
+]
