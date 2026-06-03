@@ -188,5 +188,7 @@ def admin_portal():
 from flask import render_template_string
 
 if __name__ == '__main__':
-    init_tracking_database()
-    app.run(debug=True, port=5000)
+    import os
+    # The cloud server will give us a dynamic port, or use 5000 as a backup
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
