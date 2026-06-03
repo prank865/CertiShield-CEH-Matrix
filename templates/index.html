@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CertiShield Enterprise Prep Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0b0f19; }
+        body { font-family: 'Inter', sans-serif; background-color: #0b0f19; -webkit-tap-highlight-color: transparent; }
         .glass-panel {
             background: rgba(17, 24, 39, 0.7);
             backdrop-filter: blur(12px);
@@ -16,150 +16,151 @@
         }
     </style>
 </head>
-<body class="text-gray-100 min-h-screen flex flex-col justify-between">
+<body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500/30">
 
+    <!-- Header: Compact on mobile, spaced on desktop -->
     <header class="border-b border-gray-800 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <div class="bg-indigo-600 text-white p-2 rounded-lg shadow-lg">
-                    <i class="fas fa-shield-halved text-xl"></i>
+                <div class="bg-indigo-600 text-white p-2 rounded-lg shadow-lg shrink-0">
+                    <i class="fas fa-shield-halved text-lg md:text-xl"></i>
                 </div>
                 <div>
-                    <span class="text-lg font-bold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">CertiShield</span>
-                    <span class="text-xs block text-indigo-400 font-medium tracking-wider uppercase">CEH v13 Matrix Engine</span>
+                    <span class="text-base md:text-lg font-bold tracking-tight bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">CertiShield</span>
+                    <span class="text-[10px] md:text-xs block text-indigo-400 font-medium tracking-wider uppercase">CEH v13 Exam Mode</span>
                 </div>
             </div>
-            <div class="flex items-center space-x-6">
-                <span class="px-3 py-1 rounded-full bg-gray-800 border border-gray-700 text-xs flex items-center gap-1.5">
-                    <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span> Blueprint: CEH v13 Standard
+            <div>
+                <span class="px-2.5 py-1 rounded-full bg-gray-800 border border-gray-700 text-[10px] md:text-xs flex items-center gap-1.5 font-medium">
+                    <span class="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-pulse"></span> Strict Simulation
                 </span>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-8 flex flex-col justify-center">
+    <!-- Main Container: Flexible sizing for phone screens -->
+    <main class="flex-grow max-w-4xl w-full mx-auto px-3 md:px-4 py-4 md:py-8 flex flex-col justify-center">
         
-        <div id="welcome-screen" class="glass-panel rounded-2xl p-8 text-center shadow-2xl">
-            <div class="w-20 h-20 bg-indigo-600/10 border border-indigo-500/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                <i class="fas fa-user-secret text-3xl text-indigo-400"></i>
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="glass-panel rounded-2xl p-5 md:p-8 text-center shadow-2xl">
+            <div class="w-16 h-16 md:w-20 md:h-20 bg-indigo-600/10 border border-indigo-500/30 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+                <i class="fas fa-user-secret text-2xl md:text-3xl text-indigo-400"></i>
             </div>
-            <h1 class="text-3xl font-extrabold text-white tracking-tight mb-3">CEH v13 Enterprise Simulation</h1>
-            <p class="text-gray-400 max-w-lg mx-auto mb-6 text-sm leading-relaxed">
-                Test your knowledge parameters against a full question pool across core hacking domains, including AI threat integrations and perimeter defense evasion matrices.
+            <h1 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight mb-2">CEH v13 Mock Simulator</h1>
+            <p class="text-gray-400 max-w-lg mx-auto mb-6 text-xs md:text-sm leading-relaxed">
+                Answers remain hidden until completion to mimic actual proctored testing conditions. Your final performance matrix will compile upon final submission.
             </p>
             
-            <div class="max-w-md mx-auto mb-8 space-y-3.5 text-left bg-gray-900/40 p-5 rounded-xl border border-gray-800/60">
-                <div class="text-xs font-bold uppercase tracking-wider text-indigo-400 flex items-center gap-2 mb-1">
-                    <i class="fas fa-id-badge"></i> Candidate Telemetry Registration
+            <div class="max-w-md mx-auto mb-6 space-y-3 text-left bg-gray-900/40 p-4 md:p-5 rounded-xl border border-gray-800/60">
+                <div class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-indigo-400 flex items-center gap-2 mb-1">
+                    <i class="fas fa-id-badge"></i> Candidate Registry
                 </div>
                 <div>
-                    <label class="block text-xs text-gray-400 mb-1 font-medium">Full Name</label>
-                    <input type="text" id="student-name" placeholder="John Doe" class="w-full bg-gray-950 border border-gray-800 focus:border-indigo-500 rounded-lg px-3.5 py-2 text-sm text-gray-100 outline-none transition-colors">
+                    <label class="block text-[11px] text-gray-400 mb-1 font-medium">Full Name</label>
+                    <input type="text" id="student-name" placeholder="John Doe" class="w-full bg-gray-950 border border-gray-800 focus:border-indigo-500 rounded-lg px-3 py-2 text-sm text-gray-100 outline-none transition-colors">
                 </div>
                 <div>
-                    <label class="block text-xs text-gray-400 mb-1 font-medium">Email Address</label>
-                    <input type="email" id="student-email" placeholder="john@example.com" class="w-full bg-gray-950 border border-gray-800 focus:border-indigo-500 rounded-lg px-3.5 py-2 text-sm text-gray-100 outline-none transition-colors">
+                    <label class="block text-[11px] text-gray-400 mb-1 font-medium">Email Address</label>
+                    <input type="email" id="student-email" placeholder="john@example.com" class="w-full bg-gray-950 border border-gray-800 focus:border-indigo-500 rounded-lg px-3 py-2 text-sm text-gray-100 outline-none transition-colors">
                 </div>
             </div>
 
-            <button onclick="startSimulation()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-8 py-3.5 rounded-xl shadow-lg transition-all inline-flex items-center space-x-2">
-                <span>Launch Evaluation & Connect Telemetry</span>
-                <i class="fas fa-terminal text-xs"></i>
+            <button onclick="startSimulation()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 md:px-8 py-3 rounded-xl shadow-lg transition-all inline-flex items-center justify-center space-x-2 text-sm">
+                <span>Launch Strict Exam Mode</span>
+                <i class="fas fa-arrow-right text-xs"></i>
             </button>
         </div>
 
-        <div id="simulation-arena" class="hidden w-full space-y-6">
-            <div class="flex justify-between items-center text-sm">
-                <span class="text-gray-400 font-medium">Vector: <span id="current-index-display" class="text-indigo-400 font-bold">1</span> / <span id="total-count-display">100</span></span>
-                <span id="domain-tag" class="px-2.5 py-1 rounded-md bg-gray-800 border border-gray-700 text-xs font-mono text-indigo-400">Domain: General</span>
+        <!-- Simulation Arena -->
+        <div id="simulation-arena" class="hidden w-full space-y-4 md:space-y-6">
+            <div class="flex justify-between items-center text-xs md:text-sm px-1">
+                <span class="text-gray-400 font-medium">Question: <span id="current-index-display" class="text-indigo-400 font-bold">1</span> / <span id="total-count-display">100</span></span>
+                <span id="domain-tag" class="px-2 py-0.5 rounded bg-gray-800 border border-gray-700 text-[10px] md:text-xs font-mono text-indigo-300 max-w-[180px] md:max-w-none truncate">Domain: General</span>
             </div>
             
-            <div class="w-full bg-gray-800 rounded-full h-2 overflow-hidden border border-gray-700/50 p-0.5">
+            <div class="w-full bg-gray-800 rounded-full h-1.5 overflow-hidden border border-gray-700/50">
                 <div id="progress-bar-fill" class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full rounded-full transition-all duration-300" style="width: 1%"></div>
             </div>
 
-            <div class="glass-panel rounded-2xl p-6 md:p-8 shadow-xl space-y-6">
-                <h2 id="question-text" class="text-lg md:text-xl font-medium text-gray-100 leading-relaxed">Loading database context vector...</h2>
-                <div id="options-box" class="grid grid-cols-1 gap-3.5 pt-2"></div>
+            <div class="glass-panel rounded-2xl p-5 md:p-8 shadow-xl space-y-4 md:space-y-6">
+                <h2 id="question-text" class="text-base md:text-lg font-medium text-gray-100 leading-relaxed">Loading questions...</h2>
+                <!-- Tall tap areas optimized for mobile thumbs -->
+                <div id="options-box" class="grid grid-cols-1 gap-2.5 md:gap-3.5 pt-1"></div>
             </div>
 
-            <div class="flex items-center justify-between pt-2">
-                <button id="prev-history-btn" onclick="regressToPreviousQuestion()" class="bg-gray-800 text-gray-300 border border-gray-700 px-5 py-2.5 rounded-xl text-sm font-medium transition-all flex items-center space-x-2 disabled:opacity-40">
+            <div class="flex items-center justify-between pt-1 gap-3">
+                <button id="prev-history-btn" onclick="regressToPreviousQuestion()" class="flex-1 sm:flex-initial bg-gray-800 text-gray-300 border border-gray-700 px-4 md:px-5 py-3 rounded-xl text-xs md:text-sm font-medium transition-all flex items-center justify-center space-x-2 disabled:opacity-40">
                     <i class="fas fa-arrow-left text-xs"></i>
-                    <span>Review Prev</span>
+                    <span>Back</span>
                 </button>
-                <button id="next-action-btn" onclick="advanceNextQuestion()" class="bg-gray-800 text-gray-500 border border-gray-700 px-6 py-2.5 rounded-xl font-medium transition-all flex items-center space-x-2 text-sm">
-                    <span id="next-btn-text">Lock Answer</span>
+                <button id="next-action-btn" onclick="advanceNextQuestion()" class="flex-1 sm:flex-initial bg-gray-800 text-gray-500 border border-gray-700 px-5 md:px-6 py-3 rounded-xl font-semibold transition-all flex items-center justify-center space-x-2 text-xs md:text-sm">
+                    <span id="next-btn-text">Next Question</span>
                     <i id="next-btn-icon" class="fas fa-chevron-right text-xs"></i>
                 </button>
             </div>
         </div>
 
-        <div id="completion-report" class="hidden w-full space-y-6">
-            
-            <div class="glass-panel rounded-2xl p-8 text-center shadow-2xl relative overflow-hidden">
-                <div class="absolute top-4 right-4" id="pass-badge"></div>
-                <h2 class="text-2xl font-bold text-white mb-1">CEH Assessment Analytics Engine</h2>
-                <p class="text-gray-400 text-xs mb-6">Telemetry records mapped directly to EC-Council Framework standards.</p>
+        <!-- Final Report / Analytics Dashboard -->
+        <div id="completion-report" class="hidden w-full space-y-4 md:space-y-6">
+            <div class="glass-panel rounded-2xl p-5 md:p-8 text-center shadow-2xl relative overflow-hidden">
+                <div class="sm:absolute sm:top-4 sm:right-4 mb-4 sm:mb-0 flex justify-center" id="pass-badge"></div>
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-1">Simulation Analytics Engine</h2>
+                <p class="text-gray-400 text-xs mb-6">Proctored session analysis complete.</p>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-4">
-                        <span class="text-xs text-gray-500 font-semibold block uppercase">Total Questions</span>
-                        <span class="text-2xl font-mono font-bold text-gray-100" id="stat-total">100</span>
+                <div class="grid grid-cols-3 gap-2 md:gap-4 mb-6">
+                    <div class="bg-gray-900/50 border border-gray-800 rounded-xl p-2.5 md:p-4">
+                        <span class="text-[10px] text-gray-500 font-semibold block uppercase tracking-wider">Total</span>
+                        <span class="text-lg md:text-2xl font-mono font-bold text-gray-100" id="stat-total">100</span>
                     </div>
-                    <div class="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
-                        <span class="text-xs text-emerald-500 font-semibold block uppercase">Correct Metrics</span>
-                        <span class="text-2xl font-mono font-bold text-emerald-400" id="stat-right">0</span>
+                    <div class="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-2.5 md:p-4">
+                        <span class="text-[10px] text-emerald-500 font-semibold block uppercase tracking-wider">Correct</span>
+                        <span class="text-lg md:text-2xl font-mono font-bold text-emerald-400" id="stat-right">0</span>
                     </div>
-                    <div class="bg-rose-500/5 border border-rose-500/20 rounded-xl p-4">
-                        <span class="text-xs text-rose-500 font-semibold block uppercase">Identified Failures</span>
-                        <span class="text-2xl font-mono font-bold text-rose-400" id="stat-wrong">0</span>
+                    <div class="bg-rose-500/5 border border-rose-500/20 rounded-xl p-2.5 md:p-4">
+                        <span class="text-[10px] text-rose-500 font-semibold block uppercase tracking-wider">Failed</span>
+                        <span class="text-lg md:text-2xl font-mono font-bold text-rose-400" id="stat-wrong">0</span>
                     </div>
                 </div>
 
                 <div class="bg-indigo-600/10 border border-indigo-500/20 rounded-xl p-4 mb-6">
-                    <span class="text-xs text-indigo-400 font-bold uppercase tracking-wider block mb-1">Pass/Fail Status Threshold Analysis</span>
-                    <p id="performance-feedback" class="text-sm text-gray-300 leading-relaxed"></p>
+                    <span class="text-[10px] md:text-xs text-indigo-400 font-bold uppercase tracking-wider block mb-1">Performance Feedback</span>
+                    <p id="performance-feedback" class="text-xs md:text-sm text-gray-300 leading-relaxed"></p>
                 </div>
 
-                <div class="flex justify-center">
-                    <button onclick="sharePerformanceProfile()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 py-2.5 rounded-xl transition-all shadow-md flex items-center space-x-2 text-sm">
+                <div class="flex flex-col sm:flex-row justify-center gap-2.5">
+                    <button onclick="sharePerformanceProfile()" class="w-full sm:w-auto bg-gray-800 hover:bg-gray-700 text-gray-200 font-medium px-4 py-2.5 rounded-xl transition-all border border-gray-700 flex items-center justify-center space-x-2 text-xs md:text-sm">
                         <i class="fas fa-share-nodes"></i>
-                        <span>Copy Shareable Telemetry Code Snippet</span>
+                        <span>Copy Share Snippet</span>
                     </button>
                 </div>
             </div>
 
-            <div class="glass-panel rounded-2xl p-6 md:p-8 shadow-xl space-y-4">
-                <h3 class="text-lg font-bold text-gray-200 flex items-center gap-2">
-                    <i class="fas fa-chart-pie text-indigo-400 text-sm"></i> Domain-Specific Knowledge Competency Matrix
+            <!-- Domain Matrix Breakdown -->
+            <div class="glass-panel rounded-2xl p-5 md:p-8 shadow-xl space-y-4">
+                <h3 class="text-base md:text-lg font-bold text-gray-200 flex items-center gap-2">
+                    <i class="fas fa-chart-pie text-indigo-400 text-sm"></i> Domain Knowledge Matrix
                 </h3>
-                <p class="text-gray-400 text-xs leading-relaxed">Review pinpoint metrics below to optimize your studying. High-weight CEH vectors require an accuracy rating of at least 75% to navigate actual testing windows comfortably.</p>
-                
-                <div id="domain-breakdown-rows" class="space-y-4 pt-2"></div>
+                <div id="domain-breakdown-rows" class="space-y-3.5 pt-1"></div>
             </div>
 
             <div class="text-center">
-                <button onclick="restartSimulationPipeline()" class="text-sm text-gray-400 hover:text-indigo-400 underline transition-colors">
-                    Initialize Fresh Simulation Session
+                <button onclick="restartSimulationPipeline()" class="text-xs text-gray-500 hover:text-indigo-400 underline transition-colors">
+                    Reset & Launch New Attempt
                 </button>
             </div>
         </div>
 
     </main>
 
-    <footer class="border-t border-gray-900 bg-gray-900/20 py-4 text-center text-xs text-gray-500">
-        <div>&copy; 2026 CertiShield Systems Core. Verified Production Diagnostic Build.</div>
+    <footer class="border-t border-gray-900 bg-gray-900/20 py-3 text-center text-[10px] md:text-xs text-gray-600">
+        <div>&copy; 2026 CertiShield Core. Mobile-Responsive Exam Client.</div>
     </footer>
 
     <script>
         let rawServerPayload = [];
         let indexPointer = 0;
         let examStateHistory = []; 
-        
-        // Advanced Analytics Persistence Variables
         let trackingAttemptToken = null;
-        let runningCorrectCounter = 0;
 
         async function fetchSimulationRepository() {
             try {
@@ -180,7 +181,7 @@
                 const absoluteCorrectAnswerString = item.options[item.correct];
                 let mappedOptions = [...item.options];
                 
-                // Shuffle options to break pattern bias
+                // Shuffle options to break bias
                 for (let i = mappedOptions.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [mappedOptions[i], mappedOptions[j]] = [mappedOptions[j], mappedOptions[i]];
@@ -203,12 +204,11 @@
             const studentEmail = document.getElementById('student-email').value.trim();
             
             if(!studentName || !studentEmail) {
-                alert("Identity verification required. Please complete all registration tracking input parameters.");
+                alert("Please fill out your registry details to link your progress telemetry.");
                 return;
             }
 
             try {
-                // Register identity session against the Flask database engine
                 const response = await fetch('/api/v1/register', {
                     method: 'POST',
                     headers: {'Content-Type': 'application/json'},
@@ -218,8 +218,6 @@
                 
                 if (registrationResult.status === "success") {
                     trackingAttemptToken = registrationResult.attempt_id;
-                    runningCorrectCounter = 0; // Reset metrics baseline
-                    
                     document.getElementById('welcome-screen').classList.add('hidden');
                     document.getElementById('simulation-arena').classList.remove('hidden');
                     renderActiveQuestionNode();
@@ -227,8 +225,7 @@
                     alert("Registry Rejection: " + registrationResult.message);
                 }
             } catch (err) {
-                console.error("Failed executing student telemetry pairing matrix.", err);
-                alert("System Interconnect Error: Database link could not verify telemetry parameters.");
+                alert("Database Connection Timed Out. Please verify server status.");
             }
         }
 
@@ -246,94 +243,48 @@
             container.innerHTML = '';
             const nextBtn = document.getElementById('next-action-btn');
 
+            // Render safe options - NO immediate feedback styling
+            currentRecord.shuffledOptions.forEach((option, idx) => {
+                const button = document.createElement('button');
+                
+                if (currentRecord.userSelectedIdx === idx) {
+                    // Selection styling - cleanly visible indigo variant
+                    button.className = "w-full text-left bg-indigo-600/15 text-indigo-300 border-2 border-indigo-500 rounded-xl px-4 py-3.5 text-xs md:text-sm font-medium flex items-center justify-between shadow-md";
+                    button.innerHTML = `<span>${option}</span><div class="h-4 w-4 rounded-full bg-indigo-500 flex items-center justify-center shrink-0 text-[9px] text-white"><i class="fas fa-circle text-[6px]"></i></div>`;
+                } else {
+                    // Standard unselected button styling
+                    button.className = "w-full text-left bg-gray-800/40 hover:bg-gray-800/80 text-gray-300 border border-gray-700/70 rounded-xl px-4 py-3.5 transition-all text-xs md:text-sm flex items-center justify-between active:scale-[0.99]";
+                    button.innerHTML = `<span>${option}</span><div class="h-4 w-4 rounded-full border border-gray-600 shrink-0"></div>`;
+                }
+                
+                button.onclick = () => processUserSelection(idx);
+                container.appendChild(button);
+            });
+
             if (currentRecord.userSelectedIdx !== null) {
-                currentRecord.shuffledOptions.forEach((option, idx) => {
-                    const button = createOptionButtonMarkup(option, idx);
-                    container.appendChild(button);
-                    applyReviewStyles(button, option, idx, currentRecord);
-                });
                 enableNextNavigationButton(nextBtn);
             } else {
-                currentRecord.shuffledOptions.forEach((option, idx) => {
-                    const button = createOptionButtonMarkup(option, idx);
-                    button.onclick = () => processUserSelection(idx);
-                    container.appendChild(button);
-                });
                 disableNextNavigationButton(nextBtn);
             }
         }
 
-        function createOptionButtonMarkup(option, idx) {
-            const button = document.createElement('button');
-            button.className = "w-full text-left bg-gray-800/40 hover:bg-gray-800 hover:text-white border border-gray-700/70 rounded-xl px-5 py-3.5 transition-all text-sm flex items-center justify-between group";
-            button.innerHTML = `<span>${option}</span><div class="h-5 w-5 rounded-full border border-gray-600 shrink-0"></div>`;
-            return button;
-        }
-
-        function applyReviewStyles(button, option, idx, record) {
-            button.onclick = null;
-            if (option === record.correctStringValue) {
-                button.className = "w-full text-left bg-emerald-500/10 text-emerald-400 border-2 border-emerald-500 rounded-xl px-5 py-3.5 text-sm font-medium flex items-center justify-between";
-                button.querySelector('div').className = "h-5 w-5 rounded-full bg-emerald-500 text-white text-[10px] flex items-center justify-center shrink-0";
-                button.querySelector('div').innerHTML = "<i class='fas fa-check'></i>";
-            } else if (idx === record.userSelectedIdx) {
-                button.className = "w-full text-left bg-rose-500/10 text-rose-400 border-2 border-rose-500 rounded-xl px-5 py-3.5 text-sm font-medium flex items-center justify-between";
-                button.querySelector('div').className = "h-5 w-5 rounded-full bg-rose-500 text-white text-[10px] flex items-center justify-center shrink-0";
-                button.querySelector('div').innerHTML = "<i class='fas fa-xmark'></i>";
-            } else {
-                button.className = "w-full text-left bg-gray-900/40 border border-gray-800 text-gray-600 rounded-xl px-5 py-3.5 text-sm cursor-not-allowed";
-            }
-        }
-
         function processUserSelection(chosenIdx) {
-            const currentRecord = examStateHistory[indexPointer];
-            currentRecord.userSelectedIdx = chosenIdx;
-            
-            // Increment telemetry variables if answer strings connect properly
-            const userWasCorrect = currentRecord.shuffledOptions[chosenIdx] === currentRecord.correctStringValue;
-            if (userWasCorrect) {
-                runningCorrectCounter++;
-            }
-
-            const childrenNodes = document.getElementById('options-box').children;
-            currentRecord.shuffledOptions.forEach((option, idx) => {
-                applyReviewStyles(childrenNodes[idx], option, idx, currentRecord);
-            });
-            
-            // Asynchronously dispatch current snapshot downstream
+            examStateHistory[indexPointer].userSelectedIdx = chosenIdx;
+            renderActiveQuestionNode(); // Re-render to show updated chosen item highlight safely
             transmitLiveTelemetryHeartbeat("IN_PROGRESS");
-            enableNextNavigationButton(document.getElementById('next-action-btn'));
-        }
-
-        async function transmitLiveTelemetryHeartbeat(currentStatus) {
-            if (!trackingAttemptToken) return;
-            try {
-                await fetch('/api/v1/telemetry/update', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({
-                        attempt_id: trackingAttemptToken,
-                        questions_completed: indexPointer + 1,
-                        total_correct: runningCorrectCounter,
-                        status: currentStatus
-                    })
-                });
-            } catch (err) {
-                console.error("Telemetry data link loss dropout drop.", err);
-            }
         }
 
         function enableNextNavigationButton(btn) {
             btn.disabled = false;
             const isLast = (indexPointer === examStateHistory.length - 1);
-            document.getElementById('next-btn-text').innerText = isLast ? "Analyze System Performance" : "Proceed Vector";
-            btn.className = "bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 py-2.5 rounded-xl shadow-lg transition-all text-sm cursor-pointer";
+            document.getElementById('next-btn-text').innerText = isLast ? "Submit Final Answers" : "Next Question";
+            btn.className = "flex-1 sm:flex-initial bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-5 md:px-6 py-3 rounded-xl shadow-lg transition-all text-xs md:text-sm cursor-pointer";
         }
 
         function disableNextNavigationButton(btn) {
             btn.disabled = true;
-            document.getElementById('next-btn-text').innerText = "Commit Selection";
-            btn.className = "bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed font-medium px-6 py-2.5 rounded-xl text-sm";
+            document.getElementById('next-btn-text').innerText = "Select an Answer";
+            btn.className = "flex-1 sm:flex-initial bg-gray-800 text-gray-500 border border-gray-700 cursor-not-allowed font-medium px-5 md:px-6 py-3 rounded-xl text-xs md:text-sm";
         }
 
         function advanceNextQuestion() {
@@ -349,25 +300,38 @@
         function regressToPreviousQuestion() {
             if(indexPointer > 0) { 
                 indexPointer--; 
-                // Recalculate true runtime correct vectors upon baseline historical regression loops
-                recalculateScoreMetricsBoundary();
                 renderActiveQuestionNode(); 
             }
         }
 
-        function recalculateScoreMetricsBoundary() {
-            let reCheckCount = 0;
-            for(let i = 0; i <= indexPointer; i++) {
-                let rec = examStateHistory[i];
+        async function transmitLiveTelemetryHeartbeat(currentStatus) {
+            if (!trackingAttemptToken) return;
+            
+            // Calculate current total correct score up to this point for telemetry analytics
+            let totalCorrectSoFar = 0;
+            examStateHistory.forEach(rec => {
                 if(rec.userSelectedIdx !== null && rec.shuffledOptions[rec.userSelectedIdx] === rec.correctStringValue) {
-                    reCheckCount++;
+                    totalCorrectSoFar++;
                 }
+            });
+
+            try {
+                await fetch('/api/v1/telemetry/update', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        attempt_id: trackingAttemptToken,
+                        questions_completed: examStateHistory.filter(q => q.userSelectedIdx !== null).length,
+                        total_correct: totalCorrectSoFar,
+                        status: currentStatus
+                    })
+                });
+            } catch (err) {
+                console.error("Telemetry connection dropout.", err);
             }
-            runningCorrectCounter = reCheckCount;
         }
 
         function concludeSimulationSession() {
-            // Signal server that the exam completed completely
             transmitLiveTelemetryHeartbeat("COMPLETED");
 
             document.getElementById('simulation-arena').classList.add('hidden');
@@ -391,6 +355,7 @@
                 }
             });
 
+            document.getElementById('stat-total').innerText = metrics.total;
             document.getElementById('stat-right').innerText = metrics.right;
             document.getElementById('stat-wrong').innerText = metrics.wrong;
 
@@ -398,15 +363,12 @@
             
             let feedbackText = "";
             let badgeHtml = "";
-            if (globalAccuracyPercentage >= 78) {
-                badgeHtml = `<span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full"><i class="fas fa-shield-check mr-1"></i> Pass Confirmed</span>`;
-                feedbackText = `Excellent security baseline profile. At an accuracy rating of ${globalAccuracyPercentage}%, you are performing safely within the standard EC-Council cut-score boundary framework. Proceed to schedule your proctored evaluation.`;
-            } else if (globalAccuracyPercentage >= 65) {
-                badgeHtml = `<span class="bg-amber-500/20 text-amber-400 border border-amber-500/40 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full"><i class="fas fa-triangle-exclamation mr-1"></i> Volatile Margin</span>`;
-                feedbackText = `Marginal accuracy threshold identified (${globalAccuracyPercentage}%). Depending on your assigned exam form difficulty matrix, this score sits right on the pass/fail line. Remediate flagged weak categories below.`;
+            if (globalAccuracyPercentage >= 75) {
+                badgeHtml = `<span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full"><i class="fas fa-shield-check mr-1"></i> Passed</span>`;
+                feedbackText = `Great job! You achieved a score of ${globalAccuracyPercentage}%. This performance is comfortably above the EC-Council passing target threshold.`;
             } else {
-                badgeHtml = `<span class="bg-rose-500/20 text-rose-400 border border-rose-500/40 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full"><i class="fas fa-bug mr-1"></i> Action Required</span>`;
-                feedbackText = `Critical security profile flaws detected. Your structural average accuracy score is ${globalAccuracyPercentage}%. EC-Council certification parameters require deep concept rebuilding. Isolate weak domains immediately.`;
+                badgeHtml = `<span class="bg-rose-500/20 text-rose-400 border border-rose-500/40 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full"><i class="fas fa-bug mr-1"></i> Retake Advised</span>`;
+                feedbackText = `Your comprehensive score is ${globalAccuracyPercentage}%. We recommend double-checking your weak points in the breakdown metrics before sitting for the physical certification window.`;
             }
             document.getElementById('pass-badge').innerHTML = badgeHtml;
             document.getElementById('performance-feedback').innerText = feedbackText;
@@ -416,20 +378,18 @@
 
             for (const [name, stats] of Object.entries(domainData)) {
                 const percentage = Math.round((stats.correct / stats.total) * 100);
-                const colorClass = percentage >= 75 ? 'from-emerald-500 to-teal-500' : (percentage >= 55 ? 'from-amber-500 to-orange-500' : 'from-rose-500 to-red-500');
-                const statusLabel = percentage >= 75 ? 'Strong Vector' : (percentage >= 55 ? 'Needs Review' : 'Critical Failure Vulnerability');
+                const colorClass = percentage >= 75 ? 'from-emerald-500 to-teal-500' : 'from-rose-500 to-red-500';
 
                 const row = document.createElement('div');
                 row.className = "space-y-1.5 bg-gray-900/30 p-3.5 border border-gray-800/40 rounded-xl";
                 row.innerHTML = `
                     <div class="flex justify-between text-xs font-medium">
-                        <span class="text-gray-200">${name}</span>
-                        <span class="${percentage >= 75 ? 'text-emerald-400' : (percentage >= 55 ? 'text-amber-400' : 'text-rose-400')} font-mono font-bold">${stats.correct}/${stats.total} (${percentage}%)</span>
+                        <span class="text-gray-300 truncate pr-2">${name}</span>
+                        <span class="font-mono font-bold">${percentage}%</span>
                     </div>
                     <div class="w-full bg-gray-800 h-2 rounded-full overflow-hidden p-0.5 border border-gray-700/30">
                         <div class="bg-gradient-to-r ${colorClass} h-full rounded-full" style="width: ${percentage}%"></div>
                     </div>
-                    <div class="text-[10px] text-gray-500 font-mono tracking-wide uppercase">${statusLabel}</div>
                 `;
                 breakdownContainer.appendChild(row);
             }
@@ -437,29 +397,19 @@
 
         function sharePerformanceProfile() {
             const right = document.getElementById('stat-right').innerText;
-            const wrong = document.getElementById('stat-wrong').innerText;
-            const accuracy = Math.round((parseInt(right) / examStateHistory.length) * 100);
+            const total = examStateHistory.length;
+            const accuracy = Math.round((parseInt(right) / total) * 100);
             
-            const shareText = `🛡️ MY CEH v13 SIMULATION TELEMETRY RUN REPORT:\n` +
-                              `📊 Overall Assessment Grade: ${accuracy}%\n` +
-                              `✅ Valid Core Hits: ${right}/${examStateHistory.length}\n` +
-                              `❌ System Vulnerabilities: ${wrong}/${examStateHistory.length}\n` +
-                              `⚡ Simulated on CertiShield CEH Engine Matrix.\n` +
-                              `Can you beat my offensive score mapping?`;
-
+            const shareText = `🛡️ MY CERTISHIELD SCORE MATRIX:\n🎯 Grade: ${accuracy}%\n✅ Correct: ${right}/${total}\n⚡ Built with Flask & Tailwind.`;
             navigator.clipboard.writeText(shareText).then(() => {
-                alert("Telemetry dataset code copied to clipboard successfully! Share it on your professional networks or study arrays.");
-            }).catch(err => {
-                console.error("Failed sharing matrix profile.", err);
+                alert("Score data template copied to clipboard storage vector!");
             });
         }
 
         function restartSimulationPipeline() {
             indexPointer = 0;
-            runningCorrectCounter = 0;
-            trackingAttemptToken = null; // Forces registration initialization sequence again
+            trackingAttemptToken = null;
             initializeExamStateHistory();
-            
             document.getElementById('completion-report').classList.add('hidden');
             document.getElementById('welcome-screen').classList.remove('hidden');
         }
