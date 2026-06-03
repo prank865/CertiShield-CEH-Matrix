@@ -1,7 +1,8 @@
-from flask import Flask, render_template, jsonify, request, make_response, render_template_string
+from flask import Flask, render_template, jsonify, request, render_template_string
 import json
 import os
-import sqlite3
+import psycopg2
+from psycopg2.extras import DictCursor
 import uuid
 from datetime import datetime
 
@@ -9,14 +10,22 @@ app = Flask(__name__)
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 QUESTIONS_FILE = os.path.join(BASE_DIR, 'questions.json')
-DATABASE_FILE = os.path.join(BASE_DIR, 'certishield_analytics.db')
+
+# Grab the secure database URL provided by Render's backend parameters
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+def get_db_connection():
+    """Establishes a connection to the permanent cloud PostgreSQL node."""
+    if not DATABASE_URL:
+        raise ValueError("CRITICAL CONFIG ERROR: DATABASE_URL environment variable is missing!")
+    return psycopg2.connect(DATABASE_URL)
 
 def init_tracking_database():
-    """Initializes the SQLite schema to track user identities and live exam sessions."""
-    conn = sqlite3.connect(DATABASE_FILE)
+    """Initializes permanent relational tables inside the cloud PostgreSQL instance."""
+    conn = get_db_connection()
     cursor = conn.cursor()
     
-    # Table to store student names and registration details
+    # User identity matrix tracking table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
             user_id TEXT PRIMARY KEY,
@@ -26,20 +35,20 @@ def init_tracking_database():
         )
     ''')
     
-    # Table to track live states, question progress, scores, and status metrics
+    # Permanent exam progress and telemetry score repository
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS exam_attempts (
             attempt_id TEXT PRIMARY KEY,
-            user_id TEXT,
+            user_id TEXT REFERENCES users(user_id),
             questions_completed INTEGER DEFAULT 0,
             total_correct INTEGER DEFAULT 0,
             status TEXT DEFAULT 'IN_PROGRESS',
             started_at TEXT NOT NULL,
-            updated_at TEXT NOT NULL,
-            FOREIGN KEY(user_id) REFERENCES users(user_id)
+            updated_at TEXT NOT NULL
         )
     ''')
     conn.commit()
+    cursor.close()
     conn.close()
 
 def load_database_records():
@@ -62,7 +71,6 @@ def get_questions():
 
 @app.route('/api/v1/register', methods=['POST'])
 def register_student():
-    """Registers a student's session identity before starting the evaluation matrix."""
     payload = request.json
     if not payload:
         return jsonify({"status": "error", "message": "Missing request payload."}), 400
@@ -77,16 +85,17 @@ def register_student():
     attempt_id = str(uuid.uuid4())
     timestamp = datetime.utcnow().isoformat()
     
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = get_db_connection()
     cursor = conn.cursor()
     
-    # Insert new user track record
-    cursor.execute("INSERT INTO users VALUES (?, ?, ?, ?)", (user_id, full_name, email, timestamp))
-    # Initialize a live exam attempt state row set to IN_PROGRESS
-    cursor.execute("INSERT INTO exam_attempts VALUES (?, ?, 0, 0, 'IN_PROGRESS', ?, ?)", 
+    cursor.execute("INSERT INTO users (user_id, full_name, email, registered_at) VALUES (%s, %s, %s, %s)", 
+                   (user_id, full_name, email, timestamp))
+    
+    cursor.execute("INSERT INTO exam_attempts (attempt_id, user_id, questions_completed, total_correct, status, started_at, updated_at) VALUES (%s, %s, 0, 0, 'IN_PROGRESS', %s, %s)", 
                    (attempt_id, user_id, timestamp, timestamp))
     
     conn.commit()
+    cursor.close()
     conn.close()
     
     return jsonify({
@@ -97,7 +106,6 @@ def register_student():
 
 @app.route('/api/v1/telemetry/update', methods=['POST'])
 def update_telemetry_stream():
-    """Receives live heartbeats from front-end to log progress positions or mid-exam abandonment."""
     payload = request.json
     if not payload:
         return jsonify({"status": "error", "message": "Missing telemetry payload."}), 400
@@ -105,32 +113,30 @@ def update_telemetry_stream():
     attempt_id = payload.get('attempt_id')
     completed_count = payload.get('questions_completed', 0)
     correct_count = payload.get('total_correct', 0)
-    status = payload.get('status', 'IN_PROGRESS') # Can be 'IN_PROGRESS' or 'COMPLETED'
+    status = payload.get('status', 'IN_PROGRESS')
     timestamp = datetime.utcnow().isoformat()
     
     if not attempt_id:
         return jsonify({"status": "error", "message": "Missing validation tracking token."}), 400
         
-    conn = sqlite3.connect(DATABASE_FILE)
+    conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute('''
         UPDATE exam_attempts 
-        SET questions_completed = ?, total_correct = ?, status = ?, updated_at = ?
-        WHERE attempt_id = ?
+        SET questions_completed = %s, total_correct = %s, status = %s, updated_at = %s
+        WHERE attempt_id = %s
     ''', (completed_count, correct_count, status, timestamp, attempt_id))
     
     conn.commit()
+    cursor.close()
     conn.close()
     return jsonify({"status": "telemetry_logged"})
 
 @app.route('/admin/dashboard')
 def admin_portal():
-    """A secure diagnostic endpoint displaying candidate attempts, dropouts, and scores."""
-    conn = sqlite3.connect(DATABASE_FILE)
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
+    conn = get_db_connection()
+    cursor = conn.cursor(cursor_factory=DictCursor)
     
-    # Query linking user data alongside attempt status tracking fields
     cursor.execute('''
         SELECT u.full_name, u.email, e.questions_completed, e.total_correct, e.status, e.started_at, e.updated_at
         FROM users u
@@ -138,9 +144,9 @@ def admin_portal():
         ORDER BY e.updated_at DESC
     ''')
     records = cursor.fetchall()
+    cursor.close()
     conn.close()
     
-    # Render dynamic monitoring board interface directly
     html_template = '''
     <!DOCTYPE html>
     <html lang="en">
@@ -150,8 +156,8 @@ def admin_portal():
     </head>
     <body class="bg-gray-950 text-gray-100 p-8">
         <div class="max-w-6xl mx-auto space-y-6">
-            <h1 class="text-3xl font-extrabold text-indigo-400">Candidate Evaluation Surveillance Control Dashboard</h1>
-            <p class="text-gray-400 text-sm">Real-time connection verification metrics detailing mid-exam dropouts and full certification completions.</p>
+            <h1 class="text-3xl font-extrabold text-indigo-400">🛡️ CertiShield Production Surveillance Terminal</h1>
+            <p class="text-gray-400 text-sm">Permanent Database Connectivity Status: Active. Real-time scores are safely preserved forever.</p>
             <div class="overflow-x-auto bg-gray-900 border border-gray-800 rounded-xl">
                 <table class="w-full text-left text-sm">
                     <thead class="bg-gray-800 text-gray-400 uppercase text-xs">
@@ -190,8 +196,13 @@ def admin_portal():
     '''
     return render_template_string(html_template, records=records)
 
-# Ensure database schema scales up before initialization pipelines open
-init_tracking_database()
+# Trigger initialization setup check automatically
+if DATABASE_URL:
+    try:
+        init_tracking_database()
+        print("PostgreSQL Schemas Checked and Synced Successfully.")
+    except Exception as e:
+        print(f"Database Initialization Error: {e}")
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
