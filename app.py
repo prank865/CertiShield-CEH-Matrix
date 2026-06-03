@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request, make_response
+from flask import Flask, render_template, jsonify, request, make_response, render_template_string
 import json
 import os
 import sqlite3
@@ -64,6 +64,9 @@ def get_questions():
 def register_student():
     """Registers a student's session identity before starting the evaluation matrix."""
     payload = request.json
+    if not payload:
+        return jsonify({"status": "error", "message": "Missing request payload."}), 400
+        
     full_name = payload.get('name')
     email = payload.get('email')
     
@@ -96,9 +99,12 @@ def register_student():
 def update_telemetry_stream():
     """Receives live heartbeats from front-end to log progress positions or mid-exam abandonment."""
     payload = request.json
+    if not payload:
+        return jsonify({"status": "error", "message": "Missing telemetry payload."}), 400
+
     attempt_id = payload.get('attempt_id')
-    completed_count = payload.get('questions_completed')
-    correct_count = payload.get('total_correct')
+    completed_count = payload.get('questions_completed', 0)
+    correct_count = payload.get('total_correct', 0)
     status = payload.get('status', 'IN_PROGRESS') # Can be 'IN_PROGRESS' or 'COMPLETED'
     timestamp = datetime.utcnow().isoformat()
     
@@ -169,7 +175,7 @@ def admin_portal():
                                 {% if row['status'] == 'COMPLETED' %}
                                 <span class="bg-emerald-500/20 text-emerald-400 px-2.5 py-1 rounded text-xs font-bold border border-emerald-500/30">Concluded</span>
                                 {% else %}
-                                <span class="bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded text-xs font-bold border border-amber-500/30 animate-pulse">Abandonded / Testing</span>
+                                <span class="bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded text-xs font-bold border border-amber-500/30 animate-pulse">In Progress</span>
                                 {% endif %}
                             </td>
                             <td class="p-4 text-xs font-mono text-gray-500">{{ row['updated_at'] }}</td>
@@ -184,11 +190,9 @@ def admin_portal():
     '''
     return render_template_string(html_template, records=records)
 
-# Helper function to easily compile raw templates on single script deployment files
-from flask import render_template_string
+# Ensure database schema scales up before initialization pipelines open
+init_tracking_database()
 
 if __name__ == '__main__':
-    import os
-    # The cloud server will give us a dynamic port, or use 5000 as a backup
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
