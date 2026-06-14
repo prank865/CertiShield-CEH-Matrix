@@ -18,7 +18,6 @@
 </head>
 <body class="text-gray-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500/30">
 
-    <!-- Header: Compact on mobile, spaced on desktop -->
     <header class="border-b border-gray-800 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
             <div class="flex items-center space-x-3">
@@ -38,10 +37,8 @@
         </div>
     </header>
 
-    <!-- Main Container: Flexible sizing for phone screens -->
     <main class="flex-grow max-w-4xl w-full mx-auto px-3 md:px-4 py-4 md:py-8 flex flex-col justify-center">
         
-        <!-- Welcome Screen -->
         <div id="welcome-screen" class="glass-panel rounded-2xl p-5 md:p-8 text-center shadow-2xl">
             <div class="w-16 h-16 md:w-20 md:h-20 bg-indigo-600/10 border border-indigo-500/30 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
                 <i class="fas fa-user-secret text-2xl md:text-3xl text-indigo-400"></i>
@@ -63,6 +60,15 @@
                     <label class="block text-[11px] text-gray-400 mb-1 font-medium">Email Address</label>
                     <input type="email" id="student-email" placeholder="john@example.com" class="w-full bg-gray-950 border border-gray-800 focus:border-indigo-500 rounded-lg px-3 py-2 text-sm text-gray-100 outline-none transition-colors">
                 </div>
+                <div>
+                    <label class="block text-[11px] text-gray-400 mb-1 font-medium tracking-wide">Select Examination Module</label>
+                    <select id="selected-exam-set" class="w-full bg-gray-950 border border-gray-800 focus:border-indigo-500 rounded-lg px-3 py-2 text-sm text-gray-100 outline-none transition-colors cursor-pointer font-medium">
+                        <option value="Set A">CEH v13 Practice Set A (100 Qs)</option>
+                        <option value="Set B">CEH v13 Practice Set B (100 Qs)</option>
+                        <option value="Set C">CEH v13 Practice Set C (100 Qs)</option>
+                        <option value="Set D">CEH v13 Practice Set D (100 Qs)</option>
+                    </select>
+                </div>
             </div>
 
             <button onclick="startSimulation()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-6 md:px-8 py-3 rounded-xl shadow-lg transition-all inline-flex items-center justify-center space-x-2 text-sm">
@@ -71,7 +77,6 @@
             </button>
         </div>
 
-        <!-- Simulation Arena -->
         <div id="simulation-arena" class="hidden w-full space-y-4 md:space-y-6">
             <div class="flex justify-between items-center text-xs md:text-sm px-1">
                 <span class="text-gray-400 font-medium">Question: <span id="current-index-display" class="text-indigo-400 font-bold">1</span> / <span id="total-count-display">100</span></span>
@@ -84,7 +89,6 @@
 
             <div class="glass-panel rounded-2xl p-5 md:p-8 shadow-xl space-y-4 md:space-y-6">
                 <h2 id="question-text" class="text-base md:text-lg font-medium text-gray-100 leading-relaxed">Loading questions...</h2>
-                <!-- Tall tap areas optimized for mobile thumbs -->
                 <div id="options-box" class="grid grid-cols-1 gap-2.5 md:gap-3.5 pt-1"></div>
             </div>
 
@@ -100,7 +104,6 @@
             </div>
         </div>
 
-        <!-- Final Report / Analytics Dashboard -->
         <div id="completion-report" class="hidden w-full space-y-4 md:space-y-6">
             <div class="glass-panel rounded-2xl p-5 md:p-8 text-center shadow-2xl relative overflow-hidden">
                 <div class="sm:absolute sm:top-4 sm:right-4 mb-4 sm:mb-0 flex justify-center" id="pass-badge"></div>
@@ -135,7 +138,6 @@
                 </div>
             </div>
 
-            <!-- Domain Matrix Breakdown -->
             <div class="glass-panel rounded-2xl p-5 md:p-8 shadow-xl space-y-4">
                 <h3 class="text-base md:text-lg font-bold text-gray-200 flex items-center gap-2">
                     <i class="fas fa-chart-pie text-indigo-400 text-sm"></i> Domain Knowledge Matrix
@@ -162,26 +164,12 @@
         let examStateHistory = []; 
         let trackingAttemptToken = null;
 
-        async function fetchSimulationRepository() {
-            try {
-                const response = await fetch('/api/v1/questions');
-                const result = await response.json();
-                if (result.status === "success") {
-                    rawServerPayload = result.data;
-                    document.getElementById('total-count-display').innerText = rawServerPayload.length;
-                    initializeExamStateHistory();
-                }
-            } catch (err) {
-                console.error("Critical System Error: Matrix uninitialized.", err);
-            }
-        }
-
         function initializeExamStateHistory() {
             examStateHistory = rawServerPayload.map((item) => {
                 const absoluteCorrectAnswerString = item.options[item.correct];
                 let mappedOptions = [...item.options];
                 
-                // Shuffle options to break bias
+                // Shuffle options to break positional bias
                 for (let i = mappedOptions.length - 1; i > 0; i--) {
                     const j = Math.floor(Math.random() * (i + 1));
                     [mappedOptions[i], mappedOptions[j]] = [mappedOptions[j], mappedOptions[i]];
@@ -198,10 +186,9 @@
         }
 
         async function startSimulation() {
-            if(examStateHistory.length === 0) return;
-            
             const studentName = document.getElementById('student-name').value.trim();
             const studentEmail = document.getElementById('student-email').value.trim();
+            const chosenSet = document.getElementById('selected-exam-set').value;
             
             if(!studentName || !studentEmail) {
                 alert("Please fill out your registry details to link your progress telemetry.");
@@ -209,20 +196,33 @@
             }
 
             try {
-                const response = await fetch('/api/v1/register', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ name: studentName, email: studentEmail })
-                });
-                const registrationResult = await response.json();
+                // Fetch questions *only* for the specific targeted module set to optimize load security
+                const response = await fetch(`/api/v1/questions?set=${encodeURIComponent(chosenSet)}`);
+                const result = await response.json();
                 
-                if (registrationResult.status === "success") {
-                    trackingAttemptToken = registrationResult.attempt_id;
-                    document.getElementById('welcome-screen').classList.add('hidden');
-                    document.getElementById('simulation-arena').classList.remove('hidden');
-                    renderActiveQuestionNode();
+                if (result.status === "success" && result.data.length > 0) {
+                    rawServerPayload = result.data;
+                    document.getElementById('total-count-display').innerText = rawServerPayload.length;
+                    initializeExamStateHistory();
+                    
+                    // Register session telemetry tracking payload
+                    const regResponse = await fetch('/api/v1/register', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ name: studentName, email: studentEmail, set: chosenSet })
+                    });
+                    const registrationResult = await regResponse.json();
+                    
+                    if (registrationResult.status === "success") {
+                        trackingAttemptToken = registrationResult.attempt_id;
+                        document.getElementById('welcome-screen').classList.add('hidden');
+                        document.getElementById('simulation-arena').classList.remove('hidden');
+                        renderActiveQuestionNode();
+                    } else {
+                        alert("Registry Rejection: " + registrationResult.message);
+                    }
                 } else {
-                    alert("Registry Rejection: " + registrationResult.message);
+                    alert(`The module "${chosenSet}" does not contain any questions inside your backend repository yet.`);
                 }
             } catch (err) {
                 alert("Database Connection Timed Out. Please verify server status.");
@@ -243,16 +243,13 @@
             container.innerHTML = '';
             const nextBtn = document.getElementById('next-action-btn');
 
-            // Render safe options - NO immediate feedback styling
             currentRecord.shuffledOptions.forEach((option, idx) => {
                 const button = document.createElement('button');
                 
                 if (currentRecord.userSelectedIdx === idx) {
-                    // Selection styling - cleanly visible indigo variant
                     button.className = "w-full text-left bg-indigo-600/15 text-indigo-300 border-2 border-indigo-500 rounded-xl px-4 py-3.5 text-xs md:text-sm font-medium flex items-center justify-between shadow-md";
                     button.innerHTML = `<span>${option}</span><div class="h-4 w-4 rounded-full bg-indigo-500 flex items-center justify-center shrink-0 text-[9px] text-white"><i class="fas fa-circle text-[6px]"></i></div>`;
                 } else {
-                    // Standard unselected button styling
                     button.className = "w-full text-left bg-gray-800/40 hover:bg-gray-800/80 text-gray-300 border border-gray-700/70 rounded-xl px-4 py-3.5 transition-all text-xs md:text-sm flex items-center justify-between active:scale-[0.99]";
                     button.innerHTML = `<span>${option}</span><div class="h-4 w-4 rounded-full border border-gray-600 shrink-0"></div>`;
                 }
@@ -270,7 +267,7 @@
 
         function processUserSelection(chosenIdx) {
             examStateHistory[indexPointer].userSelectedIdx = chosenIdx;
-            renderActiveQuestionNode(); // Re-render to show updated chosen item highlight safely
+            renderActiveQuestionNode(); 
             transmitLiveTelemetryHeartbeat("IN_PROGRESS");
         }
 
@@ -307,7 +304,6 @@
         async function transmitLiveTelemetryHeartbeat(currentStatus) {
             if (!trackingAttemptToken) return;
             
-            // Calculate current total correct score up to this point for telemetry analytics
             let totalCorrectSoFar = 0;
             examStateHistory.forEach(rec => {
                 if(rec.userSelectedIdx !== null && rec.shuffledOptions[rec.userSelectedIdx] === rec.correctStringValue) {
@@ -409,12 +405,14 @@
         function restartSimulationPipeline() {
             indexPointer = 0;
             trackingAttemptToken = null;
-            initializeExamStateHistory();
+            examStateHistory = [];
             document.getElementById('completion-report').classList.add('hidden');
             document.getElementById('welcome-screen').classList.remove('hidden');
         }
 
-        window.addEventListener('DOMContentLoaded', fetchSimulationRepository);
+        window.addEventListener('DOMContentLoaded', () => {
+            console.log("CertiShield Engine: Ready for modular dynamic set operations.");
+        });
     </script>
 </body>
 </html>

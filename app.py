@@ -40,6 +40,7 @@ def init_tracking_database():
         CREATE TABLE IF NOT EXISTS exam_attempts (
             attempt_id TEXT PRIMARY KEY,
             user_id TEXT REFERENCES users(user_id),
+            exam_set TEXT DEFAULT 'Set A',
             questions_completed INTEGER DEFAULT 0,
             total_correct INTEGER DEFAULT 0,
             status TEXT DEFAULT 'IN_PROGRESS',
@@ -47,6 +48,13 @@ def init_tracking_database():
             updated_at TEXT NOT NULL
         )
     ''')
+    
+    # Check if 'exam_set' column exists, if not add it (Migration protection)
+    try:
+        cursor.execute("ALTER TABLE exam_attempts ADD COLUMN exam_set TEXT DEFAULT 'Set A';")
+    except psycopg2.errors.DuplicateColumn:
+        pass
+        
     conn.commit()
     cursor.close()
     conn.close()
@@ -67,7 +75,16 @@ def index():
 @app.route('/api/v1/questions', methods=['GET'])
 def get_questions():
     records = load_database_records()
-    return jsonify({"status": "success", "total_count": len(records), "data": records})
+    target_set = request.args.get('set', 'Set A')
+    
+    # Filter the json items based on matching set criteria
+    filtered_records = [q for q in records if q.get('set', 'Set A') == target_set]
+    return jsonify({
+        "status": "success", 
+        "set": target_set,
+        "total_count": len(filtered_records), 
+        "data": filtered_records
+    })
 
 @app.route('/api/v1/register', methods=['POST'])
 def register_student():
@@ -77,6 +94,7 @@ def register_student():
         
     full_name = payload.get('name')
     email = payload.get('email')
+    chosen_set = payload.get('set', 'Set A')
     
     if not full_name or not email:
         return jsonify({"status": "error", "message": "Missing identity constraints."}), 400
@@ -91,8 +109,8 @@ def register_student():
     cursor.execute("INSERT INTO users (user_id, full_name, email, registered_at) VALUES (%s, %s, %s, %s)", 
                    (user_id, full_name, email, timestamp))
     
-    cursor.execute("INSERT INTO exam_attempts (attempt_id, user_id, questions_completed, total_correct, status, started_at, updated_at) VALUES (%s, %s, 0, 0, 'IN_PROGRESS', %s, %s)", 
-                   (attempt_id, user_id, timestamp, timestamp))
+    cursor.execute("INSERT INTO exam_attempts (attempt_id, user_id, exam_set, questions_completed, total_correct, status, started_at, updated_at) VALUES (%s, %s, %s, 0, 0, 'IN_PROGRESS', %s, %s)", 
+                   (attempt_id, user_id, chosen_set, timestamp, timestamp))
     
     conn.commit()
     cursor.close()
@@ -138,7 +156,7 @@ def admin_portal():
     cursor = conn.cursor(cursor_factory=DictCursor)
     
     cursor.execute('''
-        SELECT u.full_name, u.email, e.questions_completed, e.total_correct, e.status, e.started_at, e.updated_at
+        SELECT u.full_name, u.email, e.exam_set, e.questions_completed, e.total_correct, e.status, e.started_at, e.updated_at
         FROM users u
         JOIN exam_attempts e ON u.user_id = e.user_id
         ORDER BY e.updated_at DESC
@@ -157,13 +175,14 @@ def admin_portal():
     <body class="bg-gray-950 text-gray-100 p-8">
         <div class="max-w-6xl mx-auto space-y-6">
             <h1 class="text-3xl font-extrabold text-indigo-400">🛡️ CertiShield Production Surveillance Terminal</h1>
-            <p class="text-gray-400 text-sm">Permanent Database Connectivity Status: Active. Real-time scores are safely preserved forever.</p>
+            <p class="text-gray-400 text-sm">Permanent Database Connectivity Status: Active. Monitoring live progress vectors filtered by custom exam subsets.</p>
             <div class="overflow-x-auto bg-gray-900 border border-gray-800 rounded-xl">
                 <table class="w-full text-left text-sm">
                     <thead class="bg-gray-800 text-gray-400 uppercase text-xs">
                         <tr>
                             <th class="p-4">Candidate Name</th>
                             <th class="p-4">Email Address</th>
+                            <th class="p-4">Exam Module</th>
                             <th class="p-4">Progress Vector</th>
                             <th class="p-4">Total Score</th>
                             <th class="p-4">Session Status</th>
@@ -175,6 +194,7 @@ def admin_portal():
                         <tr class="hover:bg-gray-800/40">
                             <td class="p-4 font-semibold text-white">{{ row['full_name'] }}</td>
                             <td class="p-4 font-mono text-gray-300">{{ row['email'] }}</td>
+                            <td class="p-4"><span class="bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded text-xs border border-indigo-500/20 font-medium">{{ row['exam_set'] }}</span></td>
                             <td class="p-4">{{ row['questions_completed'] }} / 100</td>
                             <td class="p-4 text-indigo-400 font-bold">{{ row['total_correct'] }} Correct</td>
                             <td class="p-4">
